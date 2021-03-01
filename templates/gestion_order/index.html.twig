@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des commande - Jhadbeauty{% endblock %}
+
+{% block body %}
+    <div class="container w-75">
+
+        <h3 class="mt-4">Gestions des commandes</h3>
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th></th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Passée le</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Réference</th>
+                <th scope="col">Détails commande</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {%for order in orders%}
+            <tr>
+                <td class="badge badge-light">{{order.id}} </td>
+                <td>{{order.user.lastname}}<br><td>
+                <td>{{order.user.firstname}} </td>
+                <td><small>{{order.createdAt|date('d/m/Y')}}</small></td>
+                <td>{% if order.status == 0 %}
+                        <span class="badge badge-danger">Non payée</span>
+                    {% elseif order.status == 1 %}
+                        <span class="badge badge-success">Paiement accepté</span>
+                    {% elseif order.status ==2 %}
+                        <span>Préparation en cours</span>
+                    {% elseif order.status ==3 %}
+                        <span>Livraison en cours</span>
+                    {% endif %}
+                </td>
+                <td>{{order.amount}}€</td>
+                <td><small>{{order.reference}}</small></td>
+                {%for detail in order.details %}
+                    <td><small>{{detail.product.name}}</small></td>
+                    <td><small>{{detail.quantity}}</small></td>
+                {% endfor %}
+            </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

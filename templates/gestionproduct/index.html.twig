@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'un nouveau produit{% endblock %}
+
+{% block body %}
+
+    <h3 class="text-center mt-4">Enregistrement nouveau Produit</h3>
+
+    <div class="container w-50">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    </div>
+{% endblock %}
