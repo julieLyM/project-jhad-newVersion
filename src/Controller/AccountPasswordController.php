@@ -15,14 +15,12 @@ class AccountPasswordController extends AbstractController
 
     public function __construct(EntityManagerInterface $entityManager){
         $this->entityManager = $entityManager; /* $entitymanager permet d'aller chercher des informations dans notre base de données grace à l'ORM doctrine*/
-
     }
 
 
     /**
      * @Route("/compte/modifier-mot-de-passe", name="account_password", methods={"GET"})
      */
-
     public function index(Request $request, UserPasswordEncoderInterface $encoder)
     {
         $user = $this->getUser();
@@ -60,7 +58,6 @@ class AccountPasswordController extends AbstractController
         }
         return $this->render('account/password.html.twig', [
             'form'=>$form->createView(),
-
         ]);
     }
 }
