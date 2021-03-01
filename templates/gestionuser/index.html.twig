@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des utlisateurs- La Boutique Française{% endblock %}
+
+{% block body %}
+
+    <div class="container w-auto">
+
+    <h3 class="mt-4">Gestions des utilisateurs </h3>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th></th>
+            <th scope="col">Nom</th>
+            <th></th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Email</th>
+            <th scope="col">Anniversaire</th>
+            <th scope="col">Telephone</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Code postal</th>
+            <th scope="col">ville</th>
+            <th scope="col">Pays</th>
+            <th scope="col">Suppression</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {%for item in items%}
+        <tr>
+            <td class="badge badge-light">{{item.id}}<td>
+            <td>{{item.lastname}}<td>
+            <td>{{item.firstname}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.birthday|date('d/m/Y')}}</td>
+            <td>{{item.phone}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.zipcode}}</td>
+            <td>{{item.city}}</td>
+            <td>{{item.country}}</td>
+            <td class="text-center"><a href="{{ path('suppression_user', {'id': item.id}) }}"><img src="{{ asset('assets/image/icone/delete.png') }}" alt="supprimer user" height="15px"></a></td>
+        </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

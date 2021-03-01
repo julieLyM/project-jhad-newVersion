@@ -21,13 +21,12 @@ class RegisterController extends AbstractController
     public function __construct(EntityManagerInterface $entityManager){
         $this->entityManager = $entityManager; /* $entitymanager permet d'aller chercher des informations dans notre base de données grace à l'ORM doctrine*/
 
-
     }
+    /**
+     * @Route("/inscription", name="register", methods={"GET|POST"})
+     */
 
-        /**
-         * @Route("/inscription", name="register", methods={"GET|POST"})
-         */
-        public function index( Request $request, UserPasswordEncoderInterface $encoder): Response
+        public function index( Request $request, UserPasswordEncoderInterface $encoder)
         {
             $user = new User();
             $user->setRoles(['ROLE_USER']);
@@ -87,7 +86,6 @@ class RegisterController extends AbstractController
 
 
             }
-
 
             return $this->render('register/index.html.twig', [
                 'form'=> $form->createView(),

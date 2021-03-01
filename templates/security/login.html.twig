@@ -3,8 +3,11 @@
 {% block title %}Se connecter - JHADBeauty{% endblock %}
 
 {% block body %}
+
     <div class="container">
-    <div class="w-50 mx-auto">
+
+    <div class="w-50 mx-auto mt-4">
+
         <form method="post">
 
             {% if error %}
@@ -25,7 +28,7 @@
                 </div>
             {% endif %}
 
-            <h1 class="h3 mb-3 font-weight-normal">Merci de vous connecter</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Connecter-vous à votre compte</h1>
             <label for="inputEmail">Votre email</label>
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail"placeholder="Votre adresse email" class="form-control" required autofocus>
             <label for="inputPassword">Votre mot de passe</label>

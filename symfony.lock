@@ -160,7 +160,9 @@
         ]
     },
     "swiftmailer/swiftmailer": {
-        "version": "v6.2.5"
+        "version": "v6.2.5"},
+    "stripe/stripe-php": {
+        "version": "v7.75.0"
     },
     "symfony/asset": {
         "version": "v5.2.3"

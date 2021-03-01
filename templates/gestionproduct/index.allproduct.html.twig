@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des produits - La Boutique Française{% endblock %}
+
+{% block body %}
+    <div class="container w-75">
+
+    <h3 class="mt-4">Gestions des produits </h3>
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+    <a href="{{ path('gestion_create_product') }}">Créer un nouveau produit</a>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th></th>
+                <th scope="col">Nom</th>
+                <th></th>
+                <th scope="col">Categorie</th>
+                <th scope="col">Image</th>
+                <th scope="col">Description</th>
+                <th scope="col">Crée le</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Modification</th>
+                <th scope="col">Suppression</th>
+            </tr>
+            </thead>
+            <tbody>
+            {%for item in items%}
+                <tr>
+                    <td class="badge badge-light">{{item.id}}<td>
+                    <td>{{item.name}}<br><td>
+                    <td>{{item.categorie}} </td>
+                    <td><img src="/uploads/images/product/{{item.image}}" alt="{{item.name}}" height="75px"></td>
+                    <td>{{item.description}} </td>
+                    <td>{{item.createdAt|date('d/m/Y')}} </td>
+                    <td>{{item.stock}}</td>
+                    <td>{{item.price}}€</td>
+                    <td class="text-center"><a href="{{ path('gestion_modification_produit', {'id' : item.id}) }}"><img src="{{ asset('assets/image/icone/modifier.png') }}" alt="modifier mon produit" height="25px"></a></td>
+                    <td class="text-center"><a href="{{ path('gestion_delete_product', {'id' : item.id}) }}"><img src="{{ asset('assets/image/icone/delete.png') }}" alt="supprimer mon produit" height="15px"></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

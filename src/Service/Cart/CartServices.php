@@ -35,9 +35,10 @@ class CartServices
     $this->session->set('panier', $panier);
 }
 
-public function remove($id)
+    public function delete($id)
 {
     $panier= $this->session->get('panier', []);
+
     if(!empty($panier[$id])){#s'il existe
 
         unset($panier[$id]);
@@ -47,7 +48,12 @@ public function remove($id)
     $this->session->set('panier', $panier);
 }
 
-public function getFullCart(){
+    public function remove()
+    {
+        return $this->session->remove('panier');
+    }
+
+    public function getFullCart(){
 
     $panier = $this->session->get('panier', []);
 
@@ -87,7 +93,7 @@ public function getFullCart(){
 public function getTotal()
 
     {
-        $total = 0; #déclaration d'une variable pour calculer une variabe
+        $total = 0; #déclaration d'une variable pour calculer une variable
 
     foreach ($this->getFullCart() as $item){
         $total += $item['product']->getPrice() * $item['quantity'];

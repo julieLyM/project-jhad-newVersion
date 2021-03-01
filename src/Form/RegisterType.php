@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegisterType extends AbstractType
 {
@@ -34,7 +35,8 @@ class RegisterType extends AbstractType
             ])
             ->add('firstname',TextType::class,[
                 'label'=> 'Votre prenom',
-                'constraints'=> new Length([
+                'constraints'=>
+                    new Length([
                     'min'=>2,
                     'max'=>30
                 ]),

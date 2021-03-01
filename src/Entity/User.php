@@ -36,13 +36,14 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     *
+     * @Assert\Length(min=8, minMessage="Le mot de passe doit faire 8 caracteres minimum")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=80)
-     *@Assert\NotBlank(message="ce champ est obligatoire")
+     * @Assert\NotBlank(message="ce champ est obligatoire")
+     *
      */
     private $lastname;
 
@@ -60,6 +61,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
+     *
      */
     private $phone;
 
@@ -86,22 +89,26 @@ class User implements UserInterface
     private $deletedAt;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $address;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=false)
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $zipcode;
 
     /**
-     * @ORM\Column(type="string", length=80, nullable=true)
+     * @ORM\Column(type="string", length=80, nullable=false)
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $city;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $country;
 
@@ -115,16 +122,17 @@ class User implements UserInterface
      */
     private $products;
 
-    public function __toString()
-    {
-        return $this->getRoles(0);
-    }
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
         $this->products = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getId();
+    }
 
     public function getId(): ?int
     {

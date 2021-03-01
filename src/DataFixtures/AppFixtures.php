@@ -17,12 +17,12 @@ class AppFixtures extends Fixture
         # Création des catégories
         $prestation = new Category();
         $prestation->setName('service')->setSlug('service');
-        $manager->persist($prestation);
 
         $eBoutique= new Category();
         $eBoutique->setName('E-boutique')->setSlug('boutique');
-        $manager->persist($eBoutique);
 
+        $manager->persist($prestation);
+        $manager->persist($eBoutique);
         $manager->flush();
 
         # Création d'un User

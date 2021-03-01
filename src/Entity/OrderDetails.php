@@ -67,7 +67,7 @@ class OrderDetails
         return $this;
     }
 
-    public function getProduct(): ?product
+    public function getProduct(): ?Product
     {
         return $this->product;
     }

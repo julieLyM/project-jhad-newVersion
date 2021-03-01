@@ -19,48 +19,51 @@ class ChangePasswordType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'disabled' => true,
-                'label' => 'Mon adresse email'
+                'disabled'=>true,
+                'label'=>'Mon adresse email'
             ])
+
             ->add('firstname', TextType::class, [
-                'disabled' => true,
-                'label' => 'Mon prenom'
+                'disabled'=>true,
+                'label'=>'Mon prenom'
             ])
-            ->add('lastname', TextType::class, [
-                'disabled' => true,
-                'label' => 'Mon nom'
+            ->add('lastname',TextType::class, [
+                'disabled'=>true,
+                'label'=>'Mon nom'
             ])
+
             ->add('old_password', PasswordType::class, [
-                'label' => 'Mon mot de passe actuel',
-                'mapped' => false,
-                'attr' => [
-                    'placeholder' => 'Veuillez saisir votre mot de passe actuel'
+                'label'=>'Mon mot de passe actuel',
+                'mapped'=>false,
+                'attr'=>[
+                    'placeholder'=>'Veuillez saisir votre mot de passe actuel'
                 ]
             ])
             ->add('new_password', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'mapped' => false,
+                'type'=> PasswordType::class,
+                'mapped'=> false,
                 'invalid_message' => 'le mot de passe et la confirmation doivent être identiquent',
                 'label' => 'Mon nouveau mot de passe',
-                'required' => true,
+                'required'=>true,
                 'first_options' =>
-                    ['label' => 'Mon nouveau mot de passe',
-                        'attr' => [
-                            'placeholder' => 'Merci de saisir votre nouveau mot de passe']
+                    ['label'=>'Mon nouveau mot de passe',
+                        'attr'=>[
+                            'placeholder'=> 'Merci de saisir votre nouveau mot de passe']
 
                     ],
                 'second_options' =>
-                    ['label' => 'Confimer mon mot de passe',
-                        'attr' => [
-                            'placeholder' => 'Merci de confirmer votre nouveau mot de passe']
+                    ['label'=> 'Confirmer mon mot de passe',
+                        'attr'=>[
+                            'placeholder'=> 'Merci de confirmer votre nouveau mot de passe']
                     ],
             ])
-            ->add('submit', SubmitType::class, [
+            ->add('submit', SubmitType::class,[
                 'label' => "Modifier",
-                'attr' => [
-                    'class' => 'btn btn-block btn-secondary'
+                'attr'=>[
+                    'class'=>'btn btn-block btn-secondary'
                 ]
-            ]);
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

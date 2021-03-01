@@ -5,6 +5,11 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     images_directory: '%kernel.project_dir%/public/uploads/images/profil'
+<<<<<<< HEAD
+=======
+    images_directories: '%kernel.project_dir%/public/uploads/images/product'
+
+>>>>>>> 59e5a7b53704108762833c806d6fb5570e398be1
 services:
     # default configuration for services in *this* file
     _defaults:

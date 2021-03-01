@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Mon panier - La Boutique Française{% endblock %}
 
 {% block body %}
-    <h1>Mon panier</h1>
+
+    <div class="container w-75">
+    <h3 class="mt-4">Mon panier</h3>
     <p>Retrouver l'ensemble des produits que vous avez ajouté à votre panier</p>
 
     {% if items |length > 0 %}
@@ -22,7 +25,7 @@
 
             {%for item in items%}
                 <tr>
-                    <td><img src="{{item.product.image}}" alt="{{item.product.name}}" height="75px"></td>
+                    <td><img src="/uploads/images/product/{{item.product.image}}" alt="{{item.product.name}}" height="75px"></td>
                     <td>{{item.product.name}}<br>
                     <td>
                         <a href="{{ path('cart_decrease', {'id': item.product.id}) }}">
@@ -34,8 +37,8 @@
                         </a>
                     </td>
                     <td>{{ (item.product.price)|number_format(2, ',', '.')}} €</td>
-                    <td>{{ ((item.product.price * item.quantity)|number_format(2, ',', '.'))}} €</td>
-                    <td><a href="{{ path('cart_remove', {'id': item.product.id}) }}"><img src="{{ asset('assets/image/icone/delete.png') }}" alt="supprimer mon produit" height="15px"></a></td>
+                    <td>{{ (((item.product.price * item.quantity))|number_format(2, ',', '.'))}} €</td>
+                    <td><a href="{{ path('cart_delete', {'id': item.product.id}) }}"><img src="{{ asset('assets/image/icone/delete.png') }}" alt="supprimer mon produit" height="15px"></a></td>
                 </tr>
 
             {% endfor %}
@@ -43,12 +46,14 @@
         </table>
         <div class="text-right mb-5">
             <b>Nombre de produits : {{items|length }}</b><br>
-            <b>Total à payer : {{ total|number_format(2, ',', '.')}} €</b><br>
-            <a href="{{ path('order') }}" class="btn btn-info btn-block mt-2">Valider</a>
+            <b>Total à payer : {{ (total)|number_format(2, ',', '.')}} €</b><br>
+            <a href="{{ path('order') }}" class="btn btn-outline-secondary btn-block mt-2">Valider</a>
         </div>
     {% else %}
         <hr>
-        <p><b>Votre panier est vide</b></p>
+        <p class="text-center"><b>Votre panier est vide</b></p>
     {% endif %}
-{% endblock %}
 
+    </div>
+
+{% endblock %}

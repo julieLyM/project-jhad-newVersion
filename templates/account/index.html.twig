@@ -16,10 +16,12 @@
 
     {% if not app.user.image is empty %}
         <img src="{{asset('uploads/images/profil/'~app.user.image)}}" height="60px" />
+    {% else %}
+        <img src="{{asset('assets/image/photoProfilDefault.png')}}" height="60px" />
     {% endif %}
     <span>{{ app.user.firstname}} {{ app.user.lastname}}</span></br>
-    <span> <small class="font-weight-bold">Date de naissance : </small>{{ app.user.birthday|date("d/m/Y")}}</span></br>
-    <span> <small class="font-weight-bold">Votre email : </small>{{ app.user.email}}</span></br>
+    <span><small class="font-weight-bold">Date de naissance : </small>{{ app.user.birthday|date("d/m/Y")}}</span></br>
+    <span><small class="font-weight-bold">Votre email : </small>{{ app.user.email}}</span></br>
     <span><small class="font-weight-bold">Votre telephone : </small>{{ app.user.phone}}</span> </br>
     <span><small class="font-weight-bold">Votre adresse : </small>{{ app.user.address}} {{ app.user.zipcode}} {{ app.user.city}} </span></br>
     <span><small class="font-weight-bold">Votre Pays : </small>{{ app.user.country}}</span>
@@ -37,7 +39,7 @@
         <div class=" col-md-4">
             <div class="account-item text-center">
                 <img src="{{ asset('assets/image/icone/rdv.png') }}" alt ="Mes rendez-vous" height="20px">
-                <a href="{{ path('calendar_index') }}">Mes rendez-vous</a>
+                <a href="">Mes rendez-vous</a>
             </div>
         </div>
         <div class=" col-md-4">
