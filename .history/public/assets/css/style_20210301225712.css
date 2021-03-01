@@ -3,10 +3,6 @@ body{
     background-color: #FAFAFA;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> color on landing page
 .account-item{
     background-color: #d1d8e0;
     padding: 40px;
@@ -67,6 +63,8 @@ header {
 
 .colorText{
     color: #AA9560;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5em;
 
 }
 
@@ -78,69 +76,4 @@ header {
     .navbar .nav-item {
         padding: 0.5em 1em;
     }
-}
-/*
-Galerie Anne
- */
-
- .block{
-    display : flex;
-    justify-content: center;
-    
-}
-
-.galerie {
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-
-}
-.img7, .imgart1,.imgart5, .imgart2, .imgart4, .img6 {
-    height: 290px;
-    width: 350px;}
-.img7{
-border: 2px solid black;
-}
-.imgart1{
-    border: 2px solid darkred;
-}
-.imgart5{
-    border: 2px solid darkorange;
-}
-.imgart2{
-    border: 2px solid lightgreen;
-}
-.imgart4{
-    border: 2px solid lightgrey;
-}
-.img6{
-    border: 2px solid beige;
-}
-
-
-    /*
-    Footer Anne version 3
-     */
-.footergeneral
-{
-margin-top: 22vh;
-bottom: O;
-}
-.horaires, .adresse, .coordonnees
-{
-    height: 145px;
-    background-color: pink;
-       
-}
-.footer1, .footer2,.footer3   
-{
- background-color: lightcoral;
- text-align: center;
-}
-li
-{
-    list-style: none;
-}
-.btp
-{
-    justify-content: center;  
 }
