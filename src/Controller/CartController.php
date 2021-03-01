@@ -9,8 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
 {
-    #[Route('/panier', name: 'cart_index')]
-
+    /**
+     * @Route("/panier", name="cart_index", methods={"GET"})
+     */
     public function index(CartServices $cartServices)
     {
 
@@ -20,8 +21,10 @@ class CartController extends AbstractController
         ]);
 
     }
-    #[Route('/panier/add/{id}', name: 'cart_add')]
 
+    /**
+     * @Route("/panier/add/{id}", name="cart_add", methods={"GET|POST"})
+     */
     public function add($id, CartServices $cartServices)
     {
         $cartServices->add($id);
@@ -29,8 +32,9 @@ class CartController extends AbstractController
         return  $this->redirectToRoute('cart_index');
     }
 
-    #[Route('/panier/remove/{id}', name: 'cart_remove')]
-
+    /**
+     * @Route("/panier/add/{id}", name="cart_remove", methods={"GET|POST"})
+     */
     public function remove($id, CartServices $cartServices)
     {
         $cartServices->remove($id);
@@ -38,8 +42,9 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_index');
     }
 
-    #[Route('/panier/decrease/{id}', name: 'cart_decrease')]
-
+    /**
+     * @Route("/panier/decrease/{id}", name="cart_decrease", methods={"GET|POST"})
+     */
     public function decrease(CartServices $cartServices, $id)
     {
         $cartServices->decrease($id);

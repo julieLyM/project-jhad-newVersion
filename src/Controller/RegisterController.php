@@ -23,9 +23,10 @@ class RegisterController extends AbstractController
 
 
     }
-        #[Route('/inscription', name: 'register', methods:['GET|POST'])]
 
-
+        /**
+         * @Route("/inscription", name="register", methods={"GET|POST"})
+         */
         public function index( Request $request, UserPasswordEncoderInterface $encoder): Response
         {
             $user = new User();
