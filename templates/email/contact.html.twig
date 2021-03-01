@@ -1,0 +1,20 @@
+{% block body %}
+    <div class="container">
+    <h1>Nouveau message !</h1>
+
+    <h3 style="font-weight: bold"> prenom</h3>
+    <p>{{ contact.firstname }}</p>
+
+    <h3 style="font-weight: bold"> nom</h3>
+    <p>{{ contact.lastname }}</p>
+
+    <h3 style="font-weight: bold"> email</h3>
+    <p>{{ contact.email }}</p>
+
+    <h3 style="font-weight: bold"> telephone</h3>
+    <p>{{ contact.phone }}</p>
+
+    <h3 style="font-weight: bold"> message</h3>
+    <h4>{{ contact.message | raw }}</h4>
+    </div>
+{% endblock %}

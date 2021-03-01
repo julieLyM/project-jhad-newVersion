@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notre E-shop | JhadBeauty {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-5 my-auto">
+            <img src="{{ product.image}}" alt="{{ product.name}}" class="img-fluid">
+        </div>
+        <div class="col-md-7">
+            <h3>{{product.name}}</h3>
+            <span class="product-page-price"><span class="title-PageProduct">Prix : </span>{{ (product.price)}} €</span>
+            <hr>
+            <p><span class="d-block title-PageProduct">Description de la prestation :</span> {{product.description}}</p>
+            <p><span class=" d-block title-PageProduct">Temps : </span>{{ product.time | date("h:i") }}</p>
+            <h4>
+                {% if app.user %}
+
+                <a href="{{ path('calendar_new', {id : product.id}) }}"
+                       class="btn btn-primary btn-sm">Reserver</a>
+            {% else %}
+                <p class="d-block title-PageProduct">Pour reserver vous devez vous connecter</p>
+                <a class="btn btn-outline-secondary mr-1" href="{{ path('app_login') }}">Connexion</a>
+                <a class="btn btn-outline-secondary mr-1" href="{{ path('register') }}">Inscription</a>
+            {% endif %}
+            </h4>
+            <br>
+            <a href="{{ path('home_prestation') }}">Retour aux produits</a>
+        </div>
+    </div>
+{% endblock %}

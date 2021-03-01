@@ -1,0 +1,25 @@
+
+{% extends 'base.html.twig' %}
+{% block javascript %}
+
+{% endblock %}
+
+{% block title %}Paiement de ma commande - La Boutique Française{% endblock %}
+
+{% block body %}
+
+    <h2>Mon récapitulatif</h2>
+    <p>Verifier vos informations avant de payer votre commande. </p>
+    <hr>
+    <div>
+        {% for order in orders %}
+        <div class="col-md-4 mt-4">
+
+*
+            <h5><small>Total montant : {{order.amount}}</h5>
+        </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

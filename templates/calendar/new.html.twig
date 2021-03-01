@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rendez-vous{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Prendre un rendez-vous</h1>
+                <div class="input-group mb-5">
+                    {{ include('calendar/_form.html.twig') }}
+                </div>
+                <a href="{{ path('calendar_index') }}">back to list</a>
+            </div>
+            {# <div class="col-md-6"> #}
+            {# <div class="input-group mb-5"> #}
+            {# <div id="calendrier"></div> #}
+            {# </div> #}
+            {# </div> #}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        window.onload = () => {
+            let calendarElement = document.querySelector("#calendrier")
+            let calendar = new FullCalendar.Calendar(calendarElement, {
+                initialView: 'dayGridMonth',
+                locale: 'fr',
+                timeZone: 'Europe/Paris',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek',
+                },
+                {# events: {{ data|raw }}, #}
+                editable: true,
+                eventResizableFromStart: true,
+                slotDuration: '1:00',
+                defaultView: 'agendaWeek',
+                selectable: true,
+                selectHelper: true,
+                eventLimit: true,
+                slotEventOverlap: false,
+                eventOverlap: false,
+                minTime: '9:00:00',
+                maxTime: '19:00:00',
+                allDaySlot: false
+
+            })
+
+            calendar.on('eventChange', (e) => {
+                //console.log(e)
+                let url = `/api/${e.event.id}/edit`
+                let donnees = {
+                    'title': e.event.title,
+                    'description': e.event.extendedProps.description,
+                    'start': e.event.start,
+                    'end': e.event.end,
+                    'backgroundColor': e.event.backgroundColor,
+                    'borderColor': e.event.borderColor,
+                    'textColor': e.event.textColor,
+                    'allDay': e.event.allDay,
+
+                }
+                //console.log(donnees)
+                let xhr = new XMLHttpRequest
+                xhr.open("PUT", url)
+                xhr.send(JSON.stringify(donnees))
+            })
+            calendar.render()
+        }
+    </script>
+{% endblock %}
+
+
+
