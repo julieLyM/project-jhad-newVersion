@@ -1,10 +1,8 @@
-<<<<<<< HEAD
+
 body{
     background-color: #FAFAFA;
 }
 
-=======
->>>>>>> 59e5a7b53704108762833c806d6fb5570e398be1
 .account-item{
     background-color: #d1d8e0;
     padding: 40px;
@@ -24,7 +22,6 @@ body{
 .account-item img{
     width: 35px;
 }
-<<<<<<< HEAD
 
 /**NAV BAR - LANDING PAGE DALLA*/
 
@@ -73,5 +70,4 @@ header {
         padding: 0.5em 1em;
     }
 }
-=======
->>>>>>> 59e5a7b53704108762833c806d6fb5570e398be1
+
