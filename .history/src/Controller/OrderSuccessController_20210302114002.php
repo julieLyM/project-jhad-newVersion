@@ -34,7 +34,7 @@ class OrderSuccessController extends AbstractController
             $em->flush();
 
             #Envoie de mail de confirmation(à faire)
-            $notification->sendResponseOrder();
+            $notification->sendResponse();
 
         }
 
