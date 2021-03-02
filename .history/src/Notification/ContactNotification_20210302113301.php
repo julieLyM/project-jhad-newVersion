@@ -18,21 +18,19 @@ class ContactNotification
      */
     private $renderer;
 
-    public function __construct(\Swift_Mailer $mailer, Environment $renderer)
-    {
+    public function __construct(\Swift_Mailer $mailer, Environment $renderer){
 
         $this->mailer = $mailer;
         $this->renderer = $renderer;
     }
 
-    public function notify(Contact $contact)
-    {
+    public function notify(Contact $contact){
         $message = (new \Swift_Message('Test :' . $contact->getMessage()))
             ->setFrom($contact->getEmail())
             ->setTo('contact@contact.fr')
             ->setReplyTo($contact->getEmail())
             ->setBody($this->renderer->render('email/contact.html.twig', [
-                'contact' => $contact
+                'contact'=> $contact
             ]), 'text/html');
         $this->mailer->send($message);
     }
@@ -42,7 +40,8 @@ class ContactNotification
         $message = (new \Swift_Message('Mail de confirmation'))
             ->setFrom('test@resa.com')
             ->setTo('contact@contact.fr')
-            ->setBody($this->renderer->render('email/validateEmail.html.twig', []), 'text/html');
+            ->setBody($this->renderer->render('email/validateEmail.html.twig', [
+            ]), 'text/html');
         $this->mailer->send($message);
     }
 
@@ -51,7 +50,8 @@ class ContactNotification
         $message = (new \Swift_Message('Mail de commande de produit validé '))
             ->setFrom('test@resa.com')
             ->setTo('contact@contact.fr')
-            ->setBody($this->renderer->render('email/validateEmailOrder.html.twig', []), 'text/html');
+            ->setBody($this->renderer->render('email/validateEmailProduct.html.twig', [
+            ]), 'text/html');
         $this->mailer->send($message);
     }
 }

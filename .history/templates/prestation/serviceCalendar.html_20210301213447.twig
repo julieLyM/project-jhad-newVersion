@@ -55,24 +55,7 @@
                 eventLimit: true,
                 slotEventOverlap: false,
                 eventOverlap: false,
-                allDaySlot: true,
-                selectAllow: function(selectInfo) {
-  //since we're only interested in whole days, set all times to the start/end of their respective day
-  selectInfo.start.startOf("day");
-  selectInfo.end.startOf("day");
-
-  var evts = $("#calendar").fullCalendar("clientEvents", function(evt) {
-    var st = evt.start.clone().startOf("day");
-    if (evt.end) { var ed = evt.end.clone().startOf("day"); }
-    else { ed = st; }
-
-    //return true if the event overlaps with the selection
-    return (selectInfo.start.isSameOrBefore(ed) && selectInfo.end.isSameOrAfter(st));
-  });
-
-  //return true if there are no events overlapping that day
-  return evts.length == 0;
-},
+                allDaySlot: true
 
             })
 

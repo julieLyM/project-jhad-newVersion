@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Order;
 use App\Service\Cart\CartServices;
-use App\Notification\ContactNotification;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -34,7 +33,7 @@ class OrderSuccessController extends AbstractController
             $em->flush();
 
             #Envoie de mail de confirmation(à faire)
-            $notification->sendResponseOrder();
+
 
         }
 

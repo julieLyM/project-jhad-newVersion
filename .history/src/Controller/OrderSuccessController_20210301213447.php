@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Order;
 use App\Service\Cart\CartServices;
-use App\Notification\ContactNotification;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -13,7 +12,7 @@ class OrderSuccessController extends AbstractController
     /**
      * @Route("/commande/merci/{stripeSessionId}", name="order_validate", methods={"GET|POST"})
      */
-    public function index(CartServices $cartServices, $stripeSessionId, ContactNotification $notification)
+    public function index(CartServices $cartServices, $stripeSessionId)
     {
         $order = $this->getDoctrine()->getRepository(Order::class)->findOneByStripeSessionId($stripeSessionId);
 
@@ -34,7 +33,6 @@ class OrderSuccessController extends AbstractController
             $em->flush();
 
             #Envoie de mail de confirmation(à faire)
-            $notification->sendResponseOrder();
 
         }
 

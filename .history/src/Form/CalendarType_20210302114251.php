@@ -40,9 +40,9 @@ class CalendarType extends AbstractType
                 'label' => "Des spécifications : "
             ])
             ->add('all_day')
-            // ->add('background_color', ColorType::class)
-            // ->add('border_color',ColorType::class)
-            // ->add('text_color',ColorType::class)
+            ->add('background_color', ColorType::class)
+            ->add('border_color',ColorType::class)
+            ->add('text_color',ColorType::class)
         ;
     }
 
