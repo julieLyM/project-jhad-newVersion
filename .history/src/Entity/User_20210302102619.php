@@ -131,9 +131,7 @@ class User implements UserInterface
 
     public function __toString()
     {
-
-        return $this->getFirstname() . ' ' . $this->getLastname();
-
+        return $this->getFirstname() . "";
     }
 
     public function getId(): ?int
@@ -419,4 +417,6 @@ class User implements UserInterface
 
         return $this;
     }
+
+
 }
