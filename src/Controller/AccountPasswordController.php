@@ -10,13 +10,12 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AccountPasswordController extends AbstractController
 {
-
     /**
      * @Route("/compte/modifier-mot-de-passe", name="account_password", methods={"GET|POST"})
      */
     public function index(Request $request, UserPasswordEncoderInterface $encoder)
     {
-        $user = $this->getUser();
+        $user = $this->getUser();#l'utilisateur actuel
         $form= $this->createForm(ChangePasswordType::class, $user);
 
         $form->handleRequest($request);

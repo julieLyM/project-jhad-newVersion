@@ -15,8 +15,6 @@ class ProductsController extends AbstractController
      * @Route("/boutique", name="home_boutique", methods={"GET"})
      *
      */
-
-
     public function index(): Response
     {
         $products = $this->getDoctrine()
@@ -33,14 +31,13 @@ class ProductsController extends AbstractController
      * @Route("/boutique/{id}", name="boutique_product", methods={"GET"})
      *
      */
-
-    public function productDetails( $id)
+    public function productDetails($id)
    {
         /*On récupère les produits et pour cela on doit faire un requete sql => grace à l'orm doctrine et donc on abesionde l'entite manager */
        $product = $this->getDoctrine()
            ->getRepository(Product::class)->findOneById($id);
 
-        if(!$product){
+        if(!$product){#si le produit n'existe pas
 
            return $this->redirectToRoute('home_boutique');
 
