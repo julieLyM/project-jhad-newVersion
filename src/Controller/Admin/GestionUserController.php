@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 
 use App\Entity\User;
@@ -24,7 +24,7 @@ class GestionUserController extends AbstractController
             ->findall();
 
 
-        return $this->render('gestionuser/index.html.twig', [
+        return $this->render('admin/gestionuser/index.html.twig', [
             'items'=>$items
         ]);
     }

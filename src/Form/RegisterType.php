@@ -16,7 +16,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\Regex;
 
 class RegisterType extends AbstractType
 {
@@ -56,7 +55,7 @@ class RegisterType extends AbstractType
             ])
             ->add('password', RepeatedType::class, [
                 'type'=> PasswordType::class,
-                'invalid_message' => 'le mot de passe et la confirmation doivent être identiquent',
+                'invalid_message' => 'le mot de passe et la confirmation doivent être identiques',
                 'label' => 'Votre mot de passe',
                 'required'=>true,
                 'first_options' =>
@@ -81,10 +80,15 @@ class RegisterType extends AbstractType
 
             ->add('phone',TelType::class, [
                 'label'=>'Votre telephone',
+                'constraints'=>
+                    new Length([
+                        'min'=>2,
+                        'max'=>10
+                    ]),
                 'attr'=>[
                     'placeholder'=>'Entrer votre téléphone'
                 ]
-            ] )
+            ])
             ->add('image',FileType::class,[
                 'label'=>"Votre image de profil",
                 'required'=>false
