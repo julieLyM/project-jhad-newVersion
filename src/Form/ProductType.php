@@ -13,8 +13,10 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Time;
 
 class ProductType extends AbstractType
 {
@@ -38,12 +40,11 @@ class ProductType extends AbstractType
                 'class'=>User::class,
             ])
 
-//            ->add('time', TextareaType::class, [
-//                'label'=>"Heure",
-//                'required'=>false,
-//                'attr'=>[
-//                ]
-//            ])
+            ->add('time', TimeType::class, [
+               'label'=>"Heure",
+               'required'=>false,
+
+            ])
             ->add('price',MoneyType::class, [
                 'label'=>"Prix",
                 'required'=>false,

@@ -16,7 +16,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\Regex;
 
 class RegisterType extends AbstractType
 {
@@ -81,6 +80,11 @@ class RegisterType extends AbstractType
 
             ->add('phone',TelType::class, [
                 'label'=>'Votre telephone',
+                'constraints'=>
+                    new Length([
+                        'min'=>2,
+                        'max'=>10
+                    ]),
                 'attr'=>[
                     'placeholder'=>'Entrer votre téléphone'
                 ]

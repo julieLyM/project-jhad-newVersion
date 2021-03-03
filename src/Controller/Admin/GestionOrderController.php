@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Order;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,7 +23,7 @@ class GestionOrderController extends AbstractController
             ->getRepository(Order::class)
             ->findall();
 
-        return $this->render('gestion_order/index.html.twig',[
+        return $this->render('admin/gestion_order/index.html.twig',[
             'orders'=>$orders
         ]);
     }

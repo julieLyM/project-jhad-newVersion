@@ -3,7 +3,6 @@ body{
     background-color: #FAFAFA;
 }
 
-
 .account-item{
     background-color: #d1d8e0;
     padding: 40px;
@@ -71,6 +70,7 @@ header {
         padding: 0.5em 1em;
     }
 }
+
 /*
 Galerie Anne
  */
@@ -136,3 +136,4 @@ li
 {
     justify-content: center;  
 }
+

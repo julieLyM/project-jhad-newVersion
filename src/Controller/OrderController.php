@@ -5,10 +5,7 @@ namespace App\Controller;
 use App\Entity\Order;
 use App\Entity\OrderDetails;
 use App\Service\Cart\CartServices;
-use Stripe\Checkout\Session;
-use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class OrderController extends AbstractController
@@ -16,12 +13,10 @@ class OrderController extends AbstractController
     /**
      * @Route("/commande", name="order", methods={"GET|POST"})
      */
-
     public function index(CartServices $cartServices)
     {
 
             $date = new \DateTime();
-
 
             $order = new Order();
             $reference = $date->format('dmy').'-'.uniqid('', true);
@@ -38,8 +33,6 @@ class OrderController extends AbstractController
             //Enregistrer mes produits OrderDetails()
             //pour chaque produit du va iterer
 
-
-
             foreach ($cartServices->getFullCart() as $item)#Sur tout le panier qu'on récupère
             {
                 $orderDetails = new OrderDetails();
@@ -49,7 +42,6 @@ class OrderController extends AbstractController
 
                 $em =$this->getDoctrine()->getManager();
                 $em->persist($orderDetails);
-
             }
 
             $em->flush();
