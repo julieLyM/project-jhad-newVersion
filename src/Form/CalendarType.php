@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Calendar;
 use App\Entity\Product;
+use App\Entity\User;
 use App\Repository\ProductRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -28,12 +29,6 @@ class CalendarType extends AbstractType
                     },
                     'choice_label' => 'name',
                 ])
-                ->add('lastname', EntityType::class,
-                    [
-                        'label' => 'nom du client',
-                        'class' => User::class,
-                    ]
-                )
             ->add('start', DateTimeType::class, [
                 'date_widget' => 'single_text',
                 'label' => "Choisir une date "

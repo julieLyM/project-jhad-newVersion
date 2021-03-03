@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Entity\Calendar;
 use App\Form\CalendarType;
 use App\Repository\CalendarRepository;
@@ -21,19 +20,22 @@ class CalendarController extends AbstractController
     /**
      * @Route("/", name="calendar_index", methods={"GET"})
      */
-    public function index(CalendarRepository $calendarRepository): Response
+    public function index(): Response
     {
-        return $this->render('calendar/index.html.twig', [
-            'calendars' => $calendarRepository->findAll(),
-        ]);
+        // $prestations = $this->getUser()->getPrestations();
+        return $this->render('calendar/index.html.twig');
     }
 
     /**
      * @Route("/new", name="calendar_new", methods={"GET|POST"})
+     * @param Request $request
+     * @param ContactNotification $notification
+     * @return Response
      */
     public function new(Request $request,  ContactNotification $notification): Response
     {
         $calendar = new Calendar();
+        $calendar->setUser($this->getUser());
         $form = $this->createForm(CalendarType::class, $calendar);
         $form->handleRequest($request);
 
@@ -43,9 +45,7 @@ class CalendarController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($calendar);
             $entityManager->flush();
-
             $notification->sendResponse();
-
             return $this->redirectToRoute('calendar_index');
         }
 

@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Calendar index</h1>
+	<h1>Mes Prestations</h1>
 
 	<table class="table">
 		<thead>
@@ -24,7 +24,7 @@
 		</tr>
 		</thead>
 			<tbody>
-				{% for calendar in calendars %}
+				{% for calendar in app.user.prestations %}
 					<tr><td>
 					{{ calendar.id }}
 					</td><td>
