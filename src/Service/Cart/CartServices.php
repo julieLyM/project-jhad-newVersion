@@ -64,7 +64,7 @@ class CartServices
 
     $panierWithData = [];
 
-    if($this->get()){#si tu un panier avec des produits tu me fais un for each
+
 
     foreach($panier as $id => $quantity){#a chaque fois qu'il boucle il rajoute une nouvelle entrée
 
@@ -73,7 +73,7 @@ class CartServices
                     'quantity'=>$quantity
                 ];
 
-            }
+            
         }
         return $panierWithData;
     }

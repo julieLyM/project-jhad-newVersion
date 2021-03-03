@@ -13,9 +13,9 @@ class CartController extends AbstractController
     /**
      * @Route("/panier", name="cart_index", methods={"GET"})
      */
-    public function index(CartServices $cartServices, SessionInterface $session)
+    public function index(CartServices $cartServices)
     {
-            $session->clear();
+
         return $this->render('cart/index.html.twig', [
             'items'=>$cartServices->getFullCart(),
             'total'=>$cartServices->getTotal()
