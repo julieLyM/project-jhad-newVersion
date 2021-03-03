@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes commandes - JhadBeauty{% endblock %}
+
+{% block body %}
+    <div class="container w-75">
+    <h1>Mes commandes</h1>
+
+    C'est dans cet espace que vous allez pouvoir gérer toutes vos commandes<br>
+    <hr>
+    <a href="{{ path('account') }}"> Retour</a><br>
+
+    {% if app.user.orders | length == 0 %}
+        <p class="text-center">
+            Vous n'avez pas encore passé de commande sur la Boutique JhadBeauty.
+        </p>
+    {% else %}
+        <br>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Reference</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Passée le </th>
+                <th scope="col">Total</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for order in app.user.orders %}
+            {% if order.status == 1 %}
+            <tr>
+                <td><span class="badge badge-secondary">{{ order.reference }}</span></td>
+                <td>
+                    {% if order.status == 1 %}
+                        Paiement accepté
+                    {% elseif order.status ==2 %}
+                        Préparation en cours
+                    {% elseif order.status ==3 %}
+                        Livraison en cours
+                    {% endif %}
+                </td>
+                <td>{{ order.createdAt|date('d/m/Y')}}</td>
+                <td>{{ (order.amount)|number_format(2, ',', '.') }} €</td>
+                <td class="text-right"><a href="">Voir ma commande</a></td>
+                {% endif %}
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    {% endif%}
+    </div>
+{% endblock %}

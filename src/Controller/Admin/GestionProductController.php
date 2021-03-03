@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 
 use App\Entity\Product;
@@ -30,11 +30,10 @@ class GestionProductController extends AbstractController
             ->findall();
 
 
-        return $this->render('gestionproduct/index.allproduct.html.twig', [
+        return $this->render('admin/gestionproduct/index.allproduct.html.twig', [
                 'items'=>$items
         ]);
     }
-
 
     /**
      * @Route("/nos-produits/supprimer/{id}", name="gestion_delete_product", methods={"GET|POST"})
@@ -120,13 +119,12 @@ class GestionProductController extends AbstractController
         }
 
 
-        return $this->render('gestionproduct/index.html.twig', [
+        return $this->render('admin/gestionproduct/create.html.twig', [
             'form'=> $form->createView()
         ]);
 
 }
     /**
-     *
      * @Route("/nos-produits/modification/{id}", name="gestion_modification_produit", methods={"GET|POST"})
      */
     public function modification(Request $request, Product $product, SluggerInterface $slugger){
@@ -186,7 +184,7 @@ class GestionProductController extends AbstractController
         $formView = $form->createView();
 
         //Affichage de la vue
-        return $this->render('gestionproduct/index.html.twig', [
+        return $this->render('/admin/gestionproduct/create.html.twig', [
 
             'form'=>$formView
         ]);

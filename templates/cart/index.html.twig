@@ -40,13 +40,12 @@
                     <td>{{ (((item.product.price * item.quantity))|number_format(2, ',', '.'))}} €</td>
                     <td><a href="{{ path('cart_delete', {'id': item.product.id}) }}"><img src="{{ asset('assets/image/icone/delete.png') }}" alt="supprimer mon produit" height="15px"></a></td>
                 </tr>
-
             {% endfor %}
             </tbody>
         </table>
         <div class="text-right mb-5">
             <b>Nombre de produits : {{items|length }}</b><br>
-            <b>Total à payer : {{ (total)|number_format(2, ',', '.')}} €</b><br>
+            <b>Total à payer : {{ total|number_format(2, ',', '.')}} €</b><br>
             <a href="{{ path('order') }}" class="btn btn-outline-secondary btn-block mt-2">Valider</a>
         </div>
     {% else %}

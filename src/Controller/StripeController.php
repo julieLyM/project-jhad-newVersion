@@ -27,7 +27,6 @@ class StripeController extends AbstractController
 
         foreach ($order->getDetails()->getValues() as $item){#on récupere les infos en faisant une boucle grace à la variable référence de la commande
 
-
             $products_stripe[] = [
 
                 'price_data' => [
@@ -56,7 +55,7 @@ class StripeController extends AbstractController
             'cancel_url' => $YOUR_DOMAIN . '/commande/erreur/{CHECKOUT_SESSION_ID}',
         ]);
 
-        $order->SetStripeSessionId($checkout_session->id);#On crée une variable qui va nous permettre de récupérér les indos de la commande payée via stripe
+        $order->SetStripeSessionId($checkout_session->id);#On crée une variable qui va nous permettre de récupérér les infos de la commande payée via stripe
         #il faut envoyer l'information dans la base de données
         $em = $this->getDoctrine()->getManager();
         $em->flush();

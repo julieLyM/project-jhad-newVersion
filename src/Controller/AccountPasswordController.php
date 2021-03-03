@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Form\ChangePasswordType;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,19 +10,12 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AccountPasswordController extends AbstractController
 {
-    private $entityManager;
-
-    public function __construct(EntityManagerInterface $entityManager){
-        $this->entityManager = $entityManager; /* $entitymanager permet d'aller chercher des informations dans notre base de données grace à l'ORM doctrine*/
-
-    }
-
     /**
      * @Route("/compte/modifier-mot-de-passe", name="account_password", methods={"GET|POST"})
      */
     public function index(Request $request, UserPasswordEncoderInterface $encoder)
     {
-        $user = $this->getUser();
+        $user = $this->getUser();#l'utilisateur actuel
         $form= $this->createForm(ChangePasswordType::class, $user);
 
         $form->handleRequest($request);
@@ -33,7 +25,6 @@ class AccountPasswordController extends AbstractController
             /*Modifier le mot de passe*/
             /*Methode pour comparer le mot de passe actuel et le mot de passe en bdd => on utilise userPasswordEncoderInterface que je stocke dans $encoder*/
             $old_pwd = $form->get('old_password')->getData();
-
 
                 if($encoder->isPasswordValid($user, $old_pwd)){#Si le password encoder est le meme que celui en BDD et celui que le user vient d'entrer
                     #si oui
@@ -46,8 +37,10 @@ class AccountPasswordController extends AbstractController
                     #on le set le password à l'utilisateur
                     $user->setPassword($password);
 
-                    $this->entityManager->persist($user);
-                    $this->entityManager->flush();
+                    $em =$this->getDoctrine()->getManager();
+                    $em->persist($user);;/*fige la data car j'aurai besoin de l'enregister*/
+                    $em->flush();/*tu enregistre la data que tu as figé*/
+
                     $this->addFlash('success', 'Votre mot de passe a bien été mis à jour ');
 
 
