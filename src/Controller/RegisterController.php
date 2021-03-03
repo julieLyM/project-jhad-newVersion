@@ -4,29 +4,20 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegisterType;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegisterController extends AbstractController
 {
-
-    private $entityManager;
-
-    public function __construct(EntityManagerInterface $entityManager){
-        $this->entityManager = $entityManager; /* $entitymanager permet d'aller chercher des informations dans notre base de données grace à l'ORM doctrine*/
-
-    }
     /**
      * @Route("/inscription", name="register", methods={"GET|POST"})
      */
 
-        public function index( Request $request, UserPasswordEncoderInterface $encoder)
+        public function index(Request $request, UserPasswordEncoderInterface $encoder)
         {
             $user = new User();
             $user->setRoles(['ROLE_USER']);
@@ -40,9 +31,9 @@ class RegisterController extends AbstractController
                 $user = $form->getData();
 
                 //On verifier que le mail utilisateur n'est pas déja utilisé
-                $search_email = $this->entityManager->getRepository(User::class)->findOneByEmail($user->getEmail());
+                $search_email = $this->getDoctrine()->getRepository(User::class)->findOneByEmail($user->getEmail());
 
-                if(!$search_email){
+                if(!$search_email){#si l'email n'existe pas déjà
 
                     $password = $encoder->encodePassword($user, $user->getPassword()) ;
 
@@ -70,9 +61,9 @@ class RegisterController extends AbstractController
 
                     }
 
-
-                    $this->entityManager->persist($user);/*fige la data car j'aurai besoin de l'enregister*/
-                    $this->entityManager->flush();/*tu enregistre la data que tu as figé*/
+                    $em =$this->getDoctrine()->getManager();
+                    $em->persist($user);;/*fige la data car j'aurai besoin de l'enregister*/
+                    $em->flush();/*tu enregistre la data que tu as figé*/
 
 
                     #Envoie de mail

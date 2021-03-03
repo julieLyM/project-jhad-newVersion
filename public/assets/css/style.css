@@ -3,7 +3,6 @@ body{
     background-color: #FAFAFA;
 }
 
-
 .account-item{
     background-color: #d1d8e0;
     padding: 40px;
@@ -71,6 +70,7 @@ header {
         padding: 0.5em 1em;
     }
 }
+
 /*
 Galerie Anne
  */
@@ -87,8 +87,8 @@ Galerie Anne
 
 }
 .img7, .imgart1,.imgart5, .imgart2, .imgart4, .img6 {
-    height: 290px;
-    width: 350px;}
+    height: 200px;
+    width: 300px;}
 .img7{
 border: 2px solid black;
 }
@@ -117,22 +117,44 @@ border: 2px solid black;
 margin-top: 22vh;
 bottom: O;
 }
-.horaires, .adresse, .coordonnees
+.horaires, .adresse
 {
+    
     height: 145px;
-    background-color: pink;
+    background-color : rgb(238, 227, 216);
+    
+    
        
 }
+.coordonnees
+{
+    height: 145px;
+    background-color :rgb(238, 227, 216);
+    
+}
+.facebooketinsta
+{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.facebook, .instagram, .twitter
+{
+    height:60px;
+
+}
+
 .footer1, .footer2,.footer3   
 {
- background-color: lightcoral;
+ background-color:rgb(207, 196, 196);
  text-align: center;
 }
 li
 {
     list-style: none;
 }
-.btp
+.d-flex 
 {
     justify-content: center;  
+
 }
