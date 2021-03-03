@@ -36,7 +36,9 @@ class CalendarController extends AbstractController
         $form = $this->createForm(CalendarType::class, $calendar);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($calendar);
             $entityManager->flush();
@@ -57,8 +59,11 @@ class CalendarController extends AbstractController
      */
     public function show(Calendar $calendar): Response
     {
+        $user = $this->getUser();
+
         return $this->render('calendar/show.html.twig', [
-            'calendar' => $calendar
+            'calendar' => $calendar,
+            'user'=>$user
         ]);
     }
 

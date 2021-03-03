@@ -17,14 +17,14 @@ class GestionOrderController extends AbstractController
     /**
      * @Route("/commande", name="gestion_order", methods={"GET|POST"})
      */
-    public function index(): Response
+    public function index()
     {
         $orders = $this->getDoctrine()
             ->getRepository(Order::class)
-            ->findall();
+            ->findAll();
 
         return $this->render('admin/gestion_order/index.html.twig',[
-            'orders'=>$orders
+            'orders'=>$orders,
         ]);
     }
 }

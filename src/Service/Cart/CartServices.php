@@ -18,9 +18,8 @@ class CartServices
         $this->productRepository = $productRepository;
     }
 
-
-    public function add($id )
-{
+    public function add($id)
+    {
     $panier = $this->session->get('panier', []);#si je n'ai pas encore un panier dans la session , prenons un panier un tableau vide = > un tableau associatif
 
     #on rajoute les produits dans le panier
@@ -33,10 +32,10 @@ class CartServices
 
     #Remettre le panier dans la session pour le sauvegarder
     $this->session->set('panier', $panier);
-}
+    }
 
     public function delete($id)
-{
+    {
     $panier= $this->session->get('panier', []);
 
     if(!empty($panier[$id])){#s'il existe
@@ -53,6 +52,10 @@ class CartServices
         return $this->session->remove('panier');
     }
 
+    public function get()
+    {
+        return $this->session->get('cart');
+    }
     public function getFullCart(){
 
     $panier = $this->session->get('panier', []);
@@ -61,18 +64,20 @@ class CartServices
 
     $panierWithData = [];
 
+    if($this->get()){#si tu un panier avec des produits tu me fais un for each
+
     foreach($panier as $id => $quantity){#a chaque fois qu'il boucle il rajoute une nouvelle entrée
 
+                $panierWithData[] = [
+                    'product'=> $this->productRepository->find($id),
+                    'quantity'=>$quantity
+                ];
 
-        $panierWithData[] = [
-            'product'=> $this->productRepository->find($id),
-            'quantity'=>$quantity
-        ];
-
+            }
+        }
+        return $panierWithData;
     }
 
-    return $panierWithData;
-}
     public function decrease($id)
     {
         $panier = $this->session->get('panier', []);
@@ -90,17 +95,20 @@ class CartServices
         return $this->session->set('panier', $panier);#tu me reset le nouveau cart apres la suppression ou/et retrait d'un produit
     }
 
-public function getTotal()
-
-    {
-        $total = 0; #déclaration d'une variable pour calculer une variable
-
-    foreach ($this->getFullCart() as $item){
-        $total += $item['product']->getPrice() * $item['quantity'];
 
 
-    }
-        return $total;
-    }
+    public function getTotal()
+
+        {
+            $total = 0; #déclaration d'une variable pour calculer une variable
+
+            foreach ($this->getFullCart() as $item){
+                $total += $item['product']->getPrice() * $item['quantity'];
+
+        }
+            return $total;
+        }
+
+
 
 }

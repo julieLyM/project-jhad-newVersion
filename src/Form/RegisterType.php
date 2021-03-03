@@ -55,7 +55,7 @@ class RegisterType extends AbstractType
             ])
             ->add('password', RepeatedType::class, [
                 'type'=> PasswordType::class,
-                'invalid_message' => 'le mot de passe et la confirmation doivent être identiquent',
+                'invalid_message' => 'le mot de passe et la confirmation doivent être identiques',
                 'label' => 'Votre mot de passe',
                 'required'=>true,
                 'first_options' =>
@@ -88,7 +88,7 @@ class RegisterType extends AbstractType
                 'attr'=>[
                     'placeholder'=>'Entrer votre téléphone'
                 ]
-            ] )
+            ])
             ->add('image',FileType::class,[
                 'label'=>"Votre image de profil",
                 'required'=>false

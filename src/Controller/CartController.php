@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Service\Cart\CartServices;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
@@ -12,9 +13,9 @@ class CartController extends AbstractController
     /**
      * @Route("/panier", name="cart_index", methods={"GET"})
      */
-    public function index(CartServices $cartServices)
+    public function index(CartServices $cartServices, SessionInterface $session)
     {
-
+            $session->clear();
         return $this->render('cart/index.html.twig', [
             'items'=>$cartServices->getFullCart(),
             'total'=>$cartServices->getTotal()
