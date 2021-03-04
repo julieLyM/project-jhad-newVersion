@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Calendar;
 use App\Form\CalendarType;
-use App\Repository\CalendarRepository;
 use App\Notification\ContactNotification;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

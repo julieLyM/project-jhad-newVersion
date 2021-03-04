@@ -1,15 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}Calendrier{% endblock %}
 
-{% block stylesheets %}
-    <style>
-        #calendrier {
-            margin: 20px auto;
-            width: 60%;
-        }
-    </style>
-{% endblock %}
-
 {% block body %}
     <div class="row">
         <div class="d-flex justify-content-center mx-auto">
@@ -85,7 +76,8 @@
                     'borderColor': e.event.borderColor,
                     'textColor': e.event.textColor,
                     'allDay': e.event.allDay,
-                }, var blockedEvents = $('.calendar').fullCalendar('clientEvents', function (event) {
+                }
+                var blockedEvents = $('.calendar').fullCalendar('clientEvents', function (event) {
                     return event.title == 'Blocked' && event.start.format() == date.format();
                 });
                 if (blockedEvents.length < 1) {

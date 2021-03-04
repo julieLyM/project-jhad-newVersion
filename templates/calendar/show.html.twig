@@ -8,7 +8,7 @@
     <table class="table">
         <tbody>
         <tr>
-            <th>Reférence</th>
+            <th>Id</th>
             <td>{{ calendar.id }}</td>
         </tr>
         <tr>
@@ -46,11 +46,12 @@
         </tbody>
     </table>
 
-    <div class="d-flex">
-    <button class="btn btn-success btn-sm">
+    <div class="justify-content-center">
+    <button class="btn btn-secondary btn-sm">
         <a href="{{ path('calendar_new') }}">Ajouter une réservation</a>
     </button>
-    </div>
-    <a href="{{ path('calendar_index') }}">Retour à la liste</a>
 
+
+    <a href="{{ path('calendar_index') }}">Retour à la liste</a>
+    </div>
 {% endblock %}

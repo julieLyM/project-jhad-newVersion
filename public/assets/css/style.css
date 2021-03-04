@@ -1,4 +1,4 @@
-body {
+body{
     background-color: #FAFAFA;
 }
 
@@ -30,13 +30,12 @@ header {
 }
 
 .navbar .navbar-nav .nav-link {
-    color: #AA9560;
-    font-size: 30px;
-    font-family: 'Dancing Script', cursive;
+    color: grey;
+    font-size: 1.1em;
 }
 
 .navbar .navbar-nav .nav-link:hover {
-    color: #e9c35b;
+    color: #AA968A;
 }
 
 .navbar .navbar-nav {
@@ -60,14 +59,6 @@ header {
     font-weight: 900;
 }
 
-.colorText{
-    color: #AA9560;
-}
-
-.policeManuscrite{
-    font-family: 'Dancing Script', cursive;
-
-}
 
 /* LARGE SCREENS */
 @media only screen and (min-width: 960px) {
@@ -79,91 +70,72 @@ header {
     }
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> fbda37b (test)
 /*
 Galerie Anne
  */
 
- .block{
+.block{
     display : flex;
-    justify-content: center;  
-  }
-  
-  .titreGalerie {
-    margin-bottom: 0px;
-  }
-  
-  .galerie {
+    justify-content: center;
+
+}
+
+.galerie {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-<<<<<<< HEAD
 
 }
 .img7, .imgart1,.imgart5, .imgart2, .imgart4, .img6 {
     height: 200px;
     width: 300px;}
 .img7{
-border: 2px solid black;
+    border: 2px solid black;
 }
 .imgart1{
-=======
-  
-  }
-  .img7, .imgart1,.imgart5, .imgart2, .imgart4, .img6 {
-    height: 290px;
-    width: 350px;}
-  .img7{
-  border: 2px solid black;
-  }
-  .imgart1{
->>>>>>> fbda37b (test)
     border: 2px solid darkred;
-  }
-  .imgart5{
+}
+.imgart5{
     border: 2px solid darkorange;
-  }
-  .imgart2{
+}
+.imgart2{
     border: 2px solid lightgreen;
-  }
-  .imgart4{
+}
+.imgart4{
     border: 2px solid lightgrey;
-  }
-  .img6{
+}
+.img6{
     border: 2px solid beige;
-  }
-  
+}
 
-    /*
-    Footer Anne version 3
-     */
+
+/*
+Footer Anne version 3
+ */
 .footergeneral
 {
-margin-top: 22vh;
-bottom: O;
+    margin-top: 22vh;
+    bottom: O;
 }
 .horaires, .adresse
 {
-    
+
     height: 145px;
     background-color : rgb(238, 227, 216);
-    
-    
-       
+
+
+
 }
 .coordonnees
 {
     height: 145px;
     background-color :rgb(238, 227, 216);
-    
+
 }
 .facebooketinsta
 {
     display: flex;
     justify-content: space-around;
-    
+
 }
 .facebook, .instagram, .twitter
 {
@@ -171,17 +143,41 @@ bottom: O;
 
 }
 
-.footer1, .footer2,.footer3   
+.footer1, .footer2,.footer3
 {
- background-color:rgb(207, 196, 196);
- text-align: center;
+    background-color:rgb(207, 196, 196);
+    text-align: center;
 }
 li
 {
     list-style: none;
-    line-height: 1.4;
 }
-.d-flex 
+.d-flex
 {
-    justify-content: center;  
+    justify-content: center;
+
+}
+
+
+#calendrier {
+    margin: 20px auto;
+    width: 60%;
+}
+
+
+.title-PageProduct{
+    color: grey;
+}
+.contactSubTitle{
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.colorText{
+    color: #AA9560;
+}
+
+.policeManuscrite{
+    font-family: 'Dancing Script', cursive;
+
 }
