@@ -5,7 +5,7 @@
 {% block body %}
     <div class="row">
         <div class="col-md-5 my-auto">
-            <img src="{{ product.image}}" alt="{{ product.name}}" class="img-fluid">
+            <img src="/uploads/images/product/{{ product.image }}" alt="{{ product.name}}" class="img-fluid">
         </div>
         <div class="col-md-7">
             <h3>{{product.name}}</h3>
@@ -17,7 +17,7 @@
                 {% if app.user %}
 
                 <a href="{{ path('calendar_new', {id : product.id}) }}"
-                       class="btn btn-primary btn-sm">Reservé</a>
+                       class="btn btn-sm" style="background-color: lightcoral; color: rebeccapurple; font-weight:500">Réservé</a>
             {% else %}
                 <p class="d-block title-PageProduct">Pour reserver vous devez vous connecter</p>
                 <a class="btn btn-outline-secondary mr-1" href="{{ path('app_login') }}">Connexion</a>

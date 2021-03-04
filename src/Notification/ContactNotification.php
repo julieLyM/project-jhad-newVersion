@@ -54,4 +54,13 @@ class ContactNotification
             ->setBody($this->renderer->render('email/validateEmailOrder.html.twig', []), 'text/html');
         $this->mailer->send($message);
     }
+
+    public function sendResponseRegister()
+    {
+        $message = (new \Swift_Message('Inscription '))
+            ->setFrom('test@resa.com')
+            ->setTo('contact@contact.fr')
+            ->setBody($this->renderer->render('email/validateEmailRegister', []), 'text/html');
+        $this->mailer->send($message);
+    }
 }

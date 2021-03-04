@@ -5,7 +5,7 @@
     <div class="row">
         <div class="d-flex justify-content-center mx-auto">
             <a href="{{ path('calendar_new') }}">
-                <button class="btn btn-primary">Ajouter une réservation</button>
+                <button class="btn" style="background-color: lightpink; color: rebeccapurple;">Ajouter une réservation</button>
             </a>
         </div>
     </div>
@@ -30,12 +30,6 @@
                     start: 'prev,next today',
                     center: 'title',
                     end: 'dayGridMonth,timeGridWeek',
-                },
-
-                buisnessHours: {
-                    daysOfWeek: [1, 2, 3, 4, 5],
-                    startTime: '10;00',
-                    endTime: '19:00'
                 },
                 events: {{ data|raw }},
                 editable: true,

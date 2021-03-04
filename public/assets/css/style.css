@@ -31,7 +31,7 @@ header {
 
 .navbar .navbar-nav .nav-link {
     color: grey;
-    font-size: 1.1em;
+    font-size: 1.4em;
 }
 
 .navbar .navbar-nav .nav-link:hover {
@@ -114,7 +114,7 @@ Footer Anne version 3
 .footergeneral
 {
     margin-top: 22vh;
-    bottom: O;
+    bottom: 0;
 }
 .horaires, .adresse
 {
