@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegisterType;
+use App\Notification\ContactNotification;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -17,7 +18,7 @@ class RegisterController extends AbstractController
      * @Route("/inscription", name="register", methods={"GET|POST"})
      */
 
-        public function index(Request $request, UserPasswordEncoderInterface $encoder)
+        public function index(Request $request, UserPasswordEncoderInterface $encoder, ContactNotification $notification)
         {
             $user = new User();
             $user->setRoles(['ROLE_USER']);
@@ -66,7 +67,9 @@ class RegisterController extends AbstractController
                     $em->flush();/*tu enregistre la data que tu as figé*/
 
 
-                    #Envoie de mail
+                    $notification->sendResponseRegister();
+
+
 
                     $this->addFlash('success',"Votre inscription s'est bien déroulée, vous pouvez dès à présent vous connecter à votre compte ");
 

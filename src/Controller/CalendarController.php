@@ -5,11 +5,10 @@ namespace App\Controller;
 use App\Entity\Calendar;
 use App\Form\CalendarType;
 use App\Notification\ContactNotification;
-use App\Repository\CalendarRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/calendar")
@@ -20,19 +19,22 @@ class CalendarController extends AbstractController
     /**
      * @Route("/", name="calendar_index", methods={"GET"})
      */
-    public function index(CalendarRepository $calendarRepository): Response
+    public function index(): Response
     {
-        return $this->render('calendar/index.html.twig', [
-            'calendars' => $calendarRepository->findAll(),
-        ]);
+        // $prestations = $this->getUser()->getPrestations();
+        return $this->render('calendar/index.html.twig');
     }
 
     /**
      * @Route("/new", name="calendar_new", methods={"GET|POST"})
+     * @param Request $request
+     * @param ContactNotification $notification
+     * @return Response
      */
     public function new(Request $request,  ContactNotification $notification): Response
     {
         $calendar = new Calendar();
+        $calendar->setUser($this->getUser());
         $form = $this->createForm(CalendarType::class, $calendar);
         $form->handleRequest($request);
 
@@ -42,9 +44,7 @@ class CalendarController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($calendar);
             $entityManager->flush();
-
             $notification->sendResponse();
-
             return $this->redirectToRoute('calendar_index');
         }
 
@@ -67,6 +67,7 @@ class CalendarController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/{id}/edit", name="calendar_edit", methods={"GET|POST"})
      */
@@ -74,7 +75,7 @@ class CalendarController extends AbstractController
     {
         $form = $this->createForm(CalendarType::class, $calendar);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
@@ -86,12 +87,14 @@ class CalendarController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
     /**
      * @Route("/{id}", name="calendar_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Calendar $calendar): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$calendar->getId(), $request->request->get('_token'))) {
+        if ($this->isTokenValid('delete' . $calendar->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($calendar);
             $entityManager->flush();
@@ -99,6 +102,4 @@ class CalendarController extends AbstractController
 
         return $this->redirectToRoute('calendar_index');
     }
-
-
 }

@@ -3,10 +3,9 @@
 namespace App\Controller;
 
 
-
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends AbstractController
 {
@@ -29,6 +28,7 @@ class HomeController extends AbstractController
     {
         return $this->render('home/galerie.html.twig');
     }
+
     /**
      * @Route("/bookingPolicy.html.twig", name="home_bookingPolicy", methods={"GET"})
      */

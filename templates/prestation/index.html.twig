@@ -24,11 +24,11 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title"><span class="d-block title-PageProduct">Prestation : </span>{{ product.name }}</h5>
-                                <span class="d-block"><span class="d-block title-PageProduct">Temps : </span>{{ product.time | date("h:i") }} </span>
+                                <span class="d-block"><span class="d-block title-PageProduct">Durée : </span>{{ product.time | date("h:i") }} </span>
                                 <span class="d-block"><span class="d-block title-PageProduct">Prix : </span>{{ (product.price) }} €</span>
                                 <div class="row m-3">
                                     <a href="{{ path('boutique_service', {id : product.id}) }}"
-                                       class="btn btn-warning btn-sm">Lire la suite</a>
+                                       class="btn btn-sm" style="background-color: lightpink; color: rebeccapurple">Lire la suite</a>
                                 </div>
                             </div>
                         </div>

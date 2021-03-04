@@ -24,9 +24,9 @@
                 <p class="d-block"><small>Seulement {{ product.stock }} produit restant</small></p>
             {% endif %}
             {% if product.stock == 0 %}
-            <a href="{{ path('cart_add', {'id' : product.id}) }}" class="btn btn-outline-secondary disabled">Ajouter au panier</a>
+            <a href="{{ path('cart_add', {'id' : product.id}) }}" class="btn disabled" style="background-color: lightcoral; color: rebeccapurple; font-weight:500">Ajouter au panier</a>
             {% else%}
-            <a href="{{ path('cart_add', {'id' : product.id}) }}" class="btn btn-outline-secondary">Ajouter au panier</a>
+            <a href="{{ path('cart_add', {'id' : product.id}) }}" class="btn" style="background-color: lightcoral; color: rebeccapurple; font-weight:500">Ajouter au panier</a>
             {% endif %}
             <a href="{{ path('home_boutique') }}"><small>Retour aux produits</small></a>
         </div>

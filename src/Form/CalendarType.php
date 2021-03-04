@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Calendar;
 use App\Entity\Product;
+use App\Entity\User;
 use App\Repository\ProductRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -21,10 +22,10 @@ class CalendarType extends AbstractType
                 [
                     'label' => 'Choisir une prestation',
                     'class' => Product::class,
-                    'query_builder' => function(ProductRepository $er) {
+                    'query_builder' => function (ProductRepository $er) {
                         return $er->createQueryBuilder('p')
                             ->select('p')->innerJoin('p.categorie', 'c', 'with', 'c.name = :name')
-                            ->setParameter('name','service');
+                            ->setParameter('name', 'service');
                     },
                     'choice_label' => 'name',
                 ])
@@ -33,16 +34,16 @@ class CalendarType extends AbstractType
                 'label' => "Choisir une date "
 
             ])
-            //->add('end',DateTimeType::class,[
-            //    'date_widget'=>'single_text'
-            //])
-            ->add('description', TextType::class, [
-                'label' => "Des spécifications : "
-            ])
-            //->add('all_day')
-            //->add('background_color', ColorType::class)
-            //->add('border_color',ColorType::class)
-            //->add('text_color',ColorType::class)
+//            ->add('end', DateTimeType::class, [
+//                'date_widget' => 'single_text'
+//            ])
+//            ->add('description', TextType::class, [
+//                'label' => "Des spécifications : "
+//            ])
+//            ->add('all_day')
+            // ->add('background_color', ColorType::class)
+            // ->add('border_color',ColorType::class)
+            // ->add('text_color',ColorType::class)
         ;
     }
 

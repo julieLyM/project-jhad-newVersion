@@ -1,20 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block title %}Calendrier{% endblock %}
 
-{% block stylesheets %}
-    <style>
-        #calendrier {
-            margin: 20px auto;
-            width: 60%;
-        }
-    </style>
-{% endblock %}
-
 {% block body %}
     <div class="row">
         <div class="d-flex justify-content-center mx-auto">
             <a href="{{ path('calendar_new') }}">
-                <button class="btn btn-primary">Ajouter une réservation</button>
+                <button class="btn" style="background-color: lightpink; color: rebeccapurple;">Ajouter une réservation</button>
             </a>
         </div>
     </div>
@@ -40,11 +31,6 @@
                     center: 'title',
                     end: 'dayGridMonth,timeGridWeek',
                 },
-                buisnessHours: {
-                    daysOfWeek: [1, 2, 3, 4, 5],
-                    startTime: '10;00',
-                    endTime: '19:00'
-                },
                 events: {{ data|raw }},
                 editable: true,
                 eventResizableFromStart: true,
@@ -55,8 +41,21 @@
                 eventLimit: true,
                 slotEventOverlap: false,
                 eventOverlap: false,
-                allDaySlot: true
+                allDaySlot: true,
+                selectAllow: function(selectInfo) {
+                    selectInfo.start.startOf("day");
+                    selectInfo.end.startOf("day");
 
+                    var evts = $("#calendar").fullCalendar("clientEvents", function(evt) {
+                        var st = evt.start.clone().startOf("day");
+                        if (evt.end) { var ed = evt.end.clone().startOf("day"); }
+                        else { ed = st; }
+
+                        return (selectInfo.start.isSameOrBefore(ed) && selectInfo.end.isSameOrAfter(st));
+                    });
+
+                    return evts.length == 0;
+                },
             })
 
             calendar.on('eventChange', (e) => {
@@ -71,8 +70,38 @@
                     'borderColor': e.event.borderColor,
                     'textColor': e.event.textColor,
                     'allDay': e.event.allDay,
-
                 }
+                var blockedEvents = $('.calendar').fullCalendar('clientEvents', function (event) {
+                    return event.title == 'Blocked' && event.start.format() == date.format();
+                });
+                if (blockedEvents.length < 1) {
+                    var newEvent = {
+                        title: 'Blocked',
+                        start: date
+                    };
+                    $('.calendar').fullCalendar('renderEvent', newEvent, 'stick');
+                    $.ajax({
+                        type: "GET",
+                        url: "block_date",
+                        dataType: "json",
+                        data: {date: date.toJSON()},
+                        error: function (result) {
+                            $('.calendar').fullCalendar('removeEvents', newEvent);
+                        }
+                    });
+                } else {
+                    $('.calendar').fullCalendar('removeEvents', blockedEvents[0]._id);
+                    $.ajax({
+                        type: "GET",
+                        url: "unblock_date",
+                        dataType: "json",
+                        data: {date: blockedEvents[0].start.toJSON()},
+                        error: function (result) {
+                            $('.calendar').fullCalendar('renderEvent', blockedEvents[0]);
+                        }
+                    });
+                }
+
                 //console.log(donnees)
                 let xhr = new XMLHttpRequest
                 xhr.open("PUT", url)

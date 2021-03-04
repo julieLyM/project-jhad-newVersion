@@ -122,11 +122,17 @@ class User implements UserInterface
      */
     private $products;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Calendar::class, mappedBy="user")
+     */
+    private $prestations;
+
 
     public function __construct()
     {
         $this->orders = new ArrayCollection();
         $this->products = new ArrayCollection();
+        $this->prestations = new ArrayCollection();
     }
 
     public function __toString()
@@ -419,6 +425,59 @@ class User implements UserInterface
 
         return $this;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getPrestations(): Collection
+    {
+        return $this->prestations;
+    }
+
+    public function addPrestation(Calendar $prestations): self
+    {
+        if (!$this->prestations->contains($prestations)) {
+            $this->prestations[] = $prestations;
+            $prestations->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePrestation(Calendar $prestations): self
+    {
+        if ($this->prestations->removeElement($prestations)) {
+            // set the owning side to null (unless already changed)
+            if ($prestations->getUser() === $this) {
+                $prestations->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

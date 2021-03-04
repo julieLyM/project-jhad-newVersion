@@ -1,0 +1,146 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    <!-- BANNIERE -->
+{#    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">#}
+{#        <div class="carousel-inner">#}
+{#            <div class="carousel-item active">#}
+{#                <img src="https://media.istockphoto.com/photos/improved-circulation-gives-skin-a-natural-glow-picture-id1142187788?k=6&m=1142187788&s=612x612&w=0&h=WypSXf7kbL8iudxKUOrBrgzsOVcTNpjoJNwty3dnB8Q=" class="d-block w-50" alt="...">#}
+{#            </div>#}
+{#            <div class="carousel-item">#}
+{#                <img src="https://media.istockphoto.com/photos/woman-working-at-a-spa-talking-on-the-phone-picture-id1055920172?k=6&m=1055920172&s=612x612&w=0&h=5UbtEvp2Ec04JIVl-JSp14DOJii_58IdJcXZVRkEH1U=" class="d-block w-50" alt="...">#}
+{#            </div>#}
+{#            <div class="carousel-item">#}
+{#                <img src="https://media.istockphoto.com/photos/manicure-process-picture-id838483760?k=6&m=838483760&s=612x612&w=0&h=XxlcxMFnMBEot9hrOx8PQhBO2ZXNKF25a8pFeI19-OI=" class="d-block w-50" alt="...">#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+    <section class="carousel slide" data-ride="carousel">
+        <img class='d-block w-100' height="390px"
+             src="https://media.istockphoto.com/photos/skincare-cosmetics-with-aroma-eucalyptus-plant-extract-home-spa-and-picture-id938255234?k=6&m=938255234&s=612x612&w=0&h=um5Bz-8M3_sSVXKG_sGFZIyZtR7bLImhrPosiU0WxTY="
+             alt="Banner">
+    </section>
+
+    <!-- DESCRIPTION CONCEPT -->
+    <section class="container mt-4 mb-4 p-4">
+        <div class="media">
+            <div class="media-left mr-4">
+                <a href="#">
+                    <img class="img-fluid media-object"
+                         width="250px"
+                         src="https://images.pexels.com/photos/4197693/pexels-photo-4197693.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                         alt="salon">
+                </a>
+            </div>
+            <div class="media-body col-md-6">
+                <h4 class="media-heading colorText">Salon de Nail Art JHAD Beauty à Paris</h4>
+                <p class="">
+                    Le Salon Jhad Beauty est un institut de Nail Art, de manicure et d'épilation au fil unique à Paris.
+                    Nos nail artists sont toutes
+                    formées à Paris et vous amènent directement leur savoir-faire dans notre Salon Nail Art. Nous
+                    faisons très
+                    attention à la qualité et au rendu de nos créations, nous veillons à toujours vous offrir des
+                    designs
+                    tendance et uniques. C’est votre beauté et votre satisfaction qui nous importent avant tout
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNIERE -->
+    <section class="carousel slide" data-ride="carousel">
+        <img class='d-block w-100' height="310px"
+             src="https://images.pexels.com/photos/4466492/pexels-photo-4466492.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+             alt="Banner">
+    </section>
+
+    <!-- DESCRIPTION ÉQUIPE -->
+    <section class="container mt-4 mb-4 p-4">
+        <h2 class="text-center colorText">L'équipe de Jhad Beauty</h2>
+        <p class="text-center">
+            Le Salon Jhad Beauty est un institut de Nail Art et de manicure unique à Paris. Nos nail artists sont toutes
+            formées à Paris et vous amènent directement leur savoir-faire dans notre Salon Nail Art. Nous faisons très
+            attention à la qualité et au rendu de nos créations, nous veillons à toujours vous offrir des designs
+            tendance et uniques. C’est votre beauté et votre satisfaction qui nous importent avant tout
+        </p>
+
+
+        <div class="row mt-5 text-center justify-content-around">
+                <div class="card" style="width: 18rem;">
+                    <img src="https://cdn.pixabay.com/photo/2016/03/23/08/34/woman-1274361_1280.jpg"
+                         class="card-img-top" alt="profil">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <div class="p-2 mb-2">Helena H.</div>
+                            <div class="p-1">Nom</div>
+                            <div class="p-1">Prénom</div>
+                            <div class="p-1">Àge</div>
+                            <div class="p-1">Spécialité</div>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/29/13/14/attractive-1869761_1280.jpg"
+                             class="card-img-top" alt="profil">
+                        <div class="card-body">
+                            <div class="card-text">
+                                <div class="p-2 mb-2">Jade L.</div>
+                                <div class="p-1">Nom</div>
+                                <div class="p-1">Prénom</div>
+                                <div class="p-1">Àge</div>
+                                <div class="p-1">Spécialité</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- BANNIERE -->
+    <section class="carousel slide" data-ride="carousel">
+        <img class='d-block w-100' height="310px"
+             src="https://images.assetsdelivery.com/compings_v2/maya23k/maya23k1911/maya23k191100591.jpg"
+             alt="Banner">
+    </section>
+    <!-- SPÉCIALITÉS -->
+    <section class="container mt-4 mb-4 p-4">
+        <div class="card p-5 ">
+        <h2 class="text-center colorText">Spécialités de l'institut</h2>
+        <div class="card-deck mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title policeManuscrite"> Nail Art</h5>
+                    <p class="card-text">
+                        Le nail art est une technique populaire qui se répand dans le monde entier. Le Japon est réputé
+                        pour ses nail artists, ses techniques et son haut-niveau de soins.
+
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title policeManuscrite">French Manucure</h5>
+                    <p class="card-text">
+                        Nos produits et techniques de French Manucure vous garantissent un résultat magnifique et des
+                        ongles sains et éclatants.
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title policeManuscrite">Epiliaton au fil à l'indienne</h5>
+                    <p class="card-text">
+                        Découvrez nos collections, partagez vos préférences avec votre nail artist et nous pourrons
+                        créer le design parfait pour vous.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <a class="btn btn-secondary d-block w-25 mt-5 mr-auto ml-auto " href="{{ path('home_prestation') }}">Prestations et réservations</a>
+        </div>
+    </section>
+{% endblock %}
