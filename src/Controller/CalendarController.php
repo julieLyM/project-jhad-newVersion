@@ -2,14 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Calendar;
 use App\Form\CalendarType;
-use App\Notification\ContactNotification;
 use App\Repository\CalendarRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Notification\ContactNotification;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/calendar")
@@ -67,6 +68,7 @@ class CalendarController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/{id}/edit", name="calendar_edit", methods={"GET|POST"})
      */
@@ -86,12 +88,14 @@ class CalendarController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
     /**
      * @Route("/{id}", name="calendar_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Calendar $calendar): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$calendar->getId(), $request->request->get('_token'))) {
+        if ($this->isTokenValid('delete' . $calendar->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($calendar);
             $entityManager->flush();
@@ -99,6 +103,4 @@ class CalendarController extends AbstractController
 
         return $this->redirectToRoute('calendar_index');
     }
-
-
 }

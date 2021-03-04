@@ -80,19 +80,27 @@ header {
     }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> fbda37b (test)
 /*
 Galerie Anne
  */
 
  .block{
     display : flex;
-    justify-content: center;
-    
-}
-
-.galerie {
+    justify-content: center;  
+  }
+  
+  .titreGalerie {
+    margin-bottom: 0px;
+  }
+  
+  .galerie {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
+<<<<<<< HEAD
 
 }
 .img7, .imgart1,.imgart5, .imgart2, .imgart4, .img6 {
@@ -102,21 +110,32 @@ Galerie Anne
 border: 2px solid black;
 }
 .imgart1{
+=======
+  
+  }
+  .img7, .imgart1,.imgart5, .imgart2, .imgart4, .img6 {
+    height: 290px;
+    width: 350px;}
+  .img7{
+  border: 2px solid black;
+  }
+  .imgart1{
+>>>>>>> fbda37b (test)
     border: 2px solid darkred;
-}
-.imgart5{
+  }
+  .imgart5{
     border: 2px solid darkorange;
-}
-.imgart2{
+  }
+  .imgart2{
     border: 2px solid lightgreen;
-}
-.imgart4{
+  }
+  .imgart4{
     border: 2px solid lightgrey;
-}
-.img6{
+  }
+  .img6{
     border: 2px solid beige;
-}
-
+  }
+  
 
     /*
     Footer Anne version 3
@@ -161,6 +180,7 @@ bottom: O;
 li
 {
     list-style: none;
+    line-height: 1.4;
 }
 .d-flex 
 {

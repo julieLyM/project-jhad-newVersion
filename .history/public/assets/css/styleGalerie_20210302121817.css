@@ -1,0 +1,39 @@
+/*
+Galerie Anne
+ */
+
+ .block{
+  display : flex;
+  justify-content: center;  
+}
+
+.titreGalerie {
+  margin-bottom: 0px;
+}
+
+.galerie {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+
+}
+.img7, .imgart1,.imgart5, .imgart2, .imgart4, .img6 {
+  height: 290px;
+  width: 350px;}
+.img7{
+border: 2px solid black;
+}
+.imgart1{
+  border: 2px solid darkred;
+}
+.imgart5{
+  border: 2px solid darkorange;
+}
+.imgart2{
+  border: 2px solid lightgreen;
+}
+.imgart4{
+  border: 2px solid lightgrey;
+}
+.img6{
+  border: 2px solid beige;
+}
