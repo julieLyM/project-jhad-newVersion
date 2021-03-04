@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="d-flex w-100 align-items-center">
         <a class="navbar-brand" href="{{ path('home') }}">
-            <img src="{{ asset('assets/image/logo.jpeg') }}" alt="Logo" class="img-fluid rounded float-start" width="280px"/>
+            <img src="{{ asset('assets/image/logo.jpeg') }}" alt="Logo" class="img-fluid rounded float-start" width="200px"/>
         </a>
         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -9,10 +9,10 @@
         <div class="collapse navbar-collapse me-auto" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item ">
-                    <a class="nav-link  " href="{{ path('home_prestation') }}">Nos prestations<span class="sr-only">(current)</span></a>
+                    <a class="nav-link " href="{{ path('home_prestation') }}">Nos prestations<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{path('home_galerie')}}">Galerie<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Gallerie<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{ path('home_boutique') }}">E-boutique<span
@@ -39,19 +39,19 @@
             <div class="navbar-item-custom ms-auto">
                 <form class="form-inline ml-auto p-2">
                     {% if app.user %}
-                        <a class="btn btn-outline-secondary mr-1 colorText" href="{{ path('service_calendar') }}">Calendrier</a>
+                        <a class="btn btn-outline-secondary mr-1" href="{{ path('service_calendar') }}">Calendrier</a>
 
-                        <a class="btn btn-outline-secondary mr-1 colorText"
+                        <a class="btn btn-outline-secondary mr-1"
                            href="{{ path('account') }}">Mon compte
                             <medium>{{ app.user.firstname }}</medium>
                         </a>
-                        <a class="btn btn-outline-secondary mr-1 colorText"
+                        <a class="btn btn-outline-secondary mr-1"
                            href="{{ path('app_logout') }}">Se deconnecter</a>
                     {% else %}
-                        <a class="btn btn-outline-secondary mr-1 colorText" href="{{ path('app_login') }}">Connexion</a>
-                        <a class="btn btn-outline-secondary mr-1 colorText" href="{{ path('register') }}">Inscription</a>
+                        <a class="btn btn-outline-secondary mr-1" href="{{ path('app_login') }}">Connexion</a>
+                        <a class="btn btn-outline-secondary mr-1" href="{{ path('register') }}">Inscription</a>
                     {% endif %}
-                    <a class="btn btn-outline-secondary colorText" href="{{ path('cart_index') }}">
+                    <a class="btn btn-outline-secondary" href="{{ path('cart_index') }}">
                         <i class="fas fa-shopping-basket"></i>
                     </a>
                 </form>

@@ -63,6 +63,8 @@ header {
 
 .colorText{
     color: #AA9560;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5em;
 
 }
 
@@ -74,91 +76,4 @@ header {
     .navbar .nav-item {
         padding: 0.5em 1em;
     }
-}
-
-/*
-Galerie Anne
- */
-
- .block{
-    display : flex;
-    justify-content: center;
-    
-}
-
-.galerie {
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-
-}
-.img7, .imgart1,.imgart5, .imgart2, .imgart4, .img6 {
-    height: 200px;
-    width: 300px;}
-.img7{
-border: 2px solid black;
-}
-.imgart1{
-    border: 2px solid darkred;
-}
-.imgart5{
-    border: 2px solid darkorange;
-}
-.imgart2{
-    border: 2px solid lightgreen;
-}
-.imgart4{
-    border: 2px solid lightgrey;
-}
-.img6{
-    border: 2px solid beige;
-}
-
-
-    /*
-    Footer Anne version 3
-     */
-.footergeneral
-{
-margin-top: 22vh;
-bottom: O;
-}
-.horaires, .adresse
-{
-    
-    height: 145px;
-    background-color : rgb(238, 227, 216);
-    
-    
-       
-}
-.coordonnees
-{
-    height: 145px;
-    background-color :rgb(238, 227, 216);
-    
-}
-.facebooketinsta
-{
-    display: flex;
-    justify-content: space-around;
-    
-}
-.facebook, .instagram, .twitter
-{
-    height:60px;
-
-}
-
-.footer1, .footer2,.footer3   
-{
- background-color:rgb(207, 196, 196);
- text-align: center;
-}
-li
-{
-    list-style: none;
-}
-.d-flex 
-{
-    justify-content: center;  
 }

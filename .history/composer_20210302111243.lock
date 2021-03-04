@@ -2240,9 +2240,12 @@
                 "psr-13",
                 "rest"
             ],
+<<<<<<< HEAD
             "support": {
                 "source": "https://github.com/php-fig/link/tree/master"
             },
+=======
+>>>>>>> color on landing page
             "time": "2016-10-28T16:06:13+00:00"
         },
         {

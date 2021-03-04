@@ -123,6 +123,9 @@
     "nikic/php-parser": {
         "version": "v4.10.4"
     },
+    "php": {
+        "version": "7.4"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
     },
@@ -159,10 +162,11 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
-    "swiftmailer/swiftmailer": {
-        "version": "v6.2.5"},
     "stripe/stripe-php": {
         "version": "v7.75.0"
+    },
+    "swiftmailer/swiftmailer": {
+        "version": "v6.2.5"
     },
     "symfony/asset": {
         "version": "v5.2.3"
