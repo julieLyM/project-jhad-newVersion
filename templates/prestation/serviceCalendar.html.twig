@@ -40,6 +40,7 @@
                     center: 'title',
                     end: 'dayGridMonth,timeGridWeek',
                 },
+
                 buisnessHours: {
                     daysOfWeek: [1, 2, 3, 4, 5],
                     startTime: '10;00',
@@ -57,23 +58,19 @@
                 eventOverlap: false,
                 allDaySlot: true,
                 selectAllow: function(selectInfo) {
-  //since we're only interested in whole days, set all times to the start/end of their respective day
-  selectInfo.start.startOf("day");
-  selectInfo.end.startOf("day");
+                    selectInfo.start.startOf("day");
+                    selectInfo.end.startOf("day");
 
-  var evts = $("#calendar").fullCalendar("clientEvents", function(evt) {
-    var st = evt.start.clone().startOf("day");
-    if (evt.end) { var ed = evt.end.clone().startOf("day"); }
-    else { ed = st; }
+                    var evts = $("#calendar").fullCalendar("clientEvents", function(evt) {
+                        var st = evt.start.clone().startOf("day");
+                        if (evt.end) { var ed = evt.end.clone().startOf("day"); }
+                        else { ed = st; }
 
-    //return true if the event overlaps with the selection
-    return (selectInfo.start.isSameOrBefore(ed) && selectInfo.end.isSameOrAfter(st));
-  });
+                        return (selectInfo.start.isSameOrBefore(ed) && selectInfo.end.isSameOrAfter(st));
+                    });
 
-  //return true if there are no events overlapping that day
-  return evts.length == 0;
-},
-
+                    return evts.length == 0;
+                },
             })
 
             calendar.on('eventChange', (e) => {
@@ -88,8 +85,37 @@
                     'borderColor': e.event.borderColor,
                     'textColor': e.event.textColor,
                     'allDay': e.event.allDay,
-
+                }, var blockedEvents = $('.calendar').fullCalendar('clientEvents', function (event) {
+                    return event.title == 'Blocked' && event.start.format() == date.format();
+                });
+                if (blockedEvents.length < 1) {
+                    var newEvent = {
+                        title: 'Blocked',
+                        start: date
+                    };
+                    $('.calendar').fullCalendar('renderEvent', newEvent, 'stick');
+                    $.ajax({
+                        type: "GET",
+                        url: "block_date",
+                        dataType: "json",
+                        data: {date: date.toJSON()},
+                        error: function (result) {
+                            $('.calendar').fullCalendar('removeEvents', newEvent);
+                        }
+                    });
+                } else {
+                    $('.calendar').fullCalendar('removeEvents', blockedEvents[0]._id);
+                    $.ajax({
+                        type: "GET",
+                        url: "unblock_date",
+                        dataType: "json",
+                        data: {date: blockedEvents[0].start.toJSON()},
+                        error: function (result) {
+                            $('.calendar').fullCalendar('renderEvent', blockedEvents[0]);
+                        }
+                    });
                 }
+
                 //console.log(donnees)
                 let xhr = new XMLHttpRequest
                 xhr.open("PUT", url)

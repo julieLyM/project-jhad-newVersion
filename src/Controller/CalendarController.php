@@ -76,7 +76,7 @@ class CalendarController extends AbstractController
     {
         $form = $this->createForm(CalendarType::class, $calendar);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
