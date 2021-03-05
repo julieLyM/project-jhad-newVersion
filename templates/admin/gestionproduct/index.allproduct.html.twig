@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container w-75">
 
-    <h3 class="mt-4">Gestions des produits </h3>
+        <h3 class="mt-4">Gestions des produits </h3>
 
         {% for label, messages in app.flashes %}
             {% for message in messages %}
@@ -15,7 +15,7 @@
             {% endfor %}
         {% endfor %}
 
-    <a href="{{ path('gestion_create_product') }}">Créer un nouveau produit</a>
+        <a href="{{ path('gestion_create_product') }}">Créer un nouveau produit</a>
 
         <table class="table">
             <thead>
@@ -35,18 +35,28 @@
             </tr>
             </thead>
             <tbody>
-            {%for item in items%}
+            {% for item in items %}
                 <tr>
-                    <td class="badge badge-light">{{item.id}}<td>
-                    <td>{{item.name}}<br><td>
-                    <td>{{item.categorie}} </td>
-                    <td><img src="/uploads/images/product/{{item.image}}" alt="{{item.name}}" height="75px"></td>
-                    <td>{{item.description}} </td>
-                    <td>{{item.createdAt|date('d/m/Y')}} </td>
-                    <td>{{item.stock}}</td>
-                    <td>{{item.price}}€</td>
-                    <td class="text-center"><a href="{{ path('gestion_modification_produit', {'id' : item.id}) }}"><img src="{{ asset('assets/image/icone/modifier.png') }}" alt="modifier mon produit" height="25px"></a></td>
-                    <td class="text-center"><a href="{{ path('gestion_delete_product', {'id' : item.id}) }}"><img src="{{ asset('assets/image/icone/delete.png') }}" alt="supprimer mon produit" height="15px"></a></td>
+                    <td class="badge badge-light">{{ item.id }}
+                    <td>
+                    <td>{{ item.name }}<br>
+                    <td>
+                    <td>{{ item.categorie }} </td>
+                    <td><img src="/uploads/images/product/{{ item.image }}" alt="{{ item.name }}" height="75px"></td>
+                    <td>{{ item.description }}
+
+                        {# .substr({{item.description}}, 0, 30 )."...<a href='#'>Lire la suite</a> #}
+
+                    </td>
+                    <td>{{ item.createdAt|date('d/m/Y') }} </td>
+                    <td>{{ item.stock }}</td>
+                    <td>{{ item.price }}€</td>
+                    <td class="text-center"><a href="{{ path('gestion_modification_produit', {'id' : item.id}) }}"><img
+                                    src="{{ asset('assets/image/icone/modifier.png') }}" alt="modifier mon produit"
+                                    height="25px"></a></td>
+                    <td class="text-center"><a href="{{ path('gestion_delete_product', {'id' : item.id}) }}"><img
+                                    src="{{ asset('assets/image/icone/delete.png') }}" alt="supprimer mon produit"
+                                    height="15px"></a></td>
                 </tr>
             {% endfor %}
             </tbody>

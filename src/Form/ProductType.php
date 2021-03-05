@@ -40,7 +40,7 @@ class ProductType extends AbstractType
             ])
 
             ->add('time', TimeType::class, [
-               'label'=>"Temps",
+               'label'=>"Durée (si prestation)",
                'required'=>false,
 
             ])
@@ -68,7 +68,6 @@ class ProductType extends AbstractType
                     'class'=>'btn btn-block btn-outline-secondary'
                 ]
             ]);
-
     }
 
     public function configureOptions(OptionsResolver $resolver)

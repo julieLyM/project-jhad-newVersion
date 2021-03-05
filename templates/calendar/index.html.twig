@@ -1,61 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Calendar index
+{% block title %}
+    Les prestations JhadBeauty
 {% endblock %}
 
 {% block body %}
-    <h1>Mes Prestations</h1>
+    <h1>Nos réservations</h1>
 
-    <table class="table">
+    <table class="table" style="text-align: center">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Title</th>
+            <th>Nom du client</th>
+            <th>Prestations</th>
             {# <th>Nom du client</th> #}
-            <th>Start</th>
+            <th>Date et heure du rendez-vous</th>
             {# <th>End</th> #}
             {# <th>Description</th> #}
             {# <th>All_day</th> #}
             {# <th>Background_color</th> #}
             {# <th>Border_color</th> #}
             {# <th>Text_color</th> #}
-            <th>
-                actions
-            </th>
+            <th>Modifications</th>
         </tr>
         </thead>
         <tbody>
         {% for calendar in app.user.prestations %}
             <tr>
                 <td>
-                    {{ calendar.id }}
+                    {{ calendar.user.lastname }}
                 </td>
                 <td>
                     {{ calendar.product.name }}
                 </td>
                 <td>
-                    {{ calendar.start ? calendar.start|date('Y-m-d H:i:s') : '' }}
+                    {{ calendar.start ? calendar.start|date('d/m/Y H:i:s') : '' }}
                 </td>
+                {# <td>{{ calendar.description }}</td> #}
                 {# <td>{{ calendar.end ? calendar.end|date('Y-m-d H:i:s') : '' }}</td> #}
-
-                {# {{ calendar.description }} #}
-
                 {# <td>{{ calendar.allDay ? 'Yes' : 'No' }}</td> #}
                 {# <td>{{ calendar.backgroundColor }}</td> #}
                 {# <td>{{ calendar.borderColor }}</td> #}
                 {# <td>{{ calendar.textColor }}</td> #}
-                <td><a href="{{ path('calendar_show', {'id': calendar.id}) }}">show</a>
-                    <a href="{{ path('calendar_edit', {'id': calendar.id}) }}">edit</a>
+                <td>
+                    <a href="{{ path('calendar_edit', {'id': calendar.id}) }}">
+                        <img src="{{ asset('assets/image/icone/modifier.png') }}" alt="modifier mon produit" height="25px">
+                    </a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">no records found</td>
+                <td colspan="10">Pas de réservation trouvée</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a class="btn btn-sm" style="background-color: lightpink; color: rebeccapurple" href="{{ path('calendar_new') }}">Ajouter une réservation</a>
-
+    <br>
+    <div style="text-align: center">
+        <a class="btn btn-sm" style="background-color: lightpink; color: rebeccapurple" href="{{ path('calendar_new') }}">Ajouter une réservation</a>
+    </div>
 {% endblock %}
