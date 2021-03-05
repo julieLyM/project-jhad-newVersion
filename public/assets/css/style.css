@@ -1,5 +1,7 @@
 body{
     background-color: #FAFAFA;
+    padding:0;
+    margin:0;
 }
 
 .account-item{
@@ -62,11 +64,16 @@ header {
 
 /* LARGE SCREENS */
 @media only screen and (min-width: 960px) {
-    .navbar {
-        flex-direction: column; /* horizontal navbar */
-    }
+
     .navbar .nav-item {
         padding: 0.5em 1em;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+
+    .navbar .nav-item {
+        font-size: 1.1em;
     }
 }
 
@@ -121,21 +128,17 @@ Footer Anne version 3
 
     height: 145px;
     background-color : rgb(238, 227, 216);
-
-
-
 }
 .coordonnees
 {
     height: 145px;
     background-color :rgb(238, 227, 216);
-
 }
+
 .facebooketinsta
 {
     display: flex;
     justify-content: space-around;
-
 }
 .facebook, .instagram, .twitter
 {
@@ -155,7 +158,6 @@ li
 .d-flex
 {
     justify-content: center;
-
 }
 
 

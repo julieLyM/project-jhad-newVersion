@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{product.name}}- La Boutique Française {% endblock %}
+{% block title %}{{product.name}}- La Boutique JhadBeauty {% endblock %}
 
 {% block body %}
 
@@ -21,7 +21,7 @@
             {% elseif product.stock == 0 %}
                 <p class="d-block"><small>Stock epuisé</small></p>
             {% else %}
-                <p class="d-block"><small>Seulement {{ product.stock }} produit restant</small></p>
+                <p class="d-block"><small>Seulement {{ product.stock }} produit(s) restant</small></p>
             {% endif %}
             {% if product.stock == 0 %}
             <a href="{{ path('cart_add', {'id' : product.id}) }}" class="btn disabled" style="background-color: lightcoral; color: rebeccapurple; font-weight:500">Ajouter au panier</a>

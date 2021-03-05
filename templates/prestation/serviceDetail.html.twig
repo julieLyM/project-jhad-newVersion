@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Notre E-shop | JhadBeauty {% endblock %}
+{% block title %}Les prestations JhadBeauty{% endblock %}
 
 {% block body %}
     <div class="row">
@@ -17,9 +17,9 @@
                 {% if app.user %}
 
                 <a href="{{ path('calendar_new', {id : product.id}) }}"
-                       class="btn btn-sm" style="background-color: lightcoral; color: rebeccapurple; font-weight:500">Réservé</a>
+                       class="btn btn-sm" style="background-color: lightcoral; color: rebeccapurple; font-weight:500">Réserver</a>
             {% else %}
-                <p class="d-block title-PageProduct">Pour reserver vous devez vous connecter</p>
+                <p class="d-block title-PageProduct">Pour réserver vous devez vous connecter</p>
                 <a class="btn btn-outline-secondary mr-1" href="{{ path('app_login') }}">Connexion</a>
                 <a class="btn btn-outline-secondary mr-1" href="{{ path('register') }}">Inscription</a>
             {% endif %}
