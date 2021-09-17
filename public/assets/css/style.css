@@ -61,6 +61,21 @@ header {
     font-weight: 900;
 }
 
+.bloc-carousel1 {
+    height: 280px;
+}
+#test {
+    background-image: url("/assets/image/massage.jpg");
+    height: 295px;
+    background-size: 100%;
+ }
+ #test2 {
+    background-image: url("/assets/image/esthéticienne.jpg");
+    height: 295px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+ }
+
 
 /* LARGE SCREENS */
 @media only screen and (min-width: 960px) {
@@ -73,9 +88,28 @@ header {
 @media only screen and (min-width: 1024px) {
 
     .navbar .nav-item {
-        font-size: 1.1em;
+        font-size: 1em;
     }
 }
+
+
+
+
+@media only screen and (max-width: 500px) {
+
+    .bloc-carousel1 {
+        height: 150px;
+    }
+    .salon-mobile{
+        height: 330px;
+        margin:0;
+        padding:0;
+    }
+    .bloc-salon{
+        text-align: center;
+    }
+}
+
 
 /*
 Galerie Anne

@@ -23,7 +23,7 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('lastname', TextType::class,[
-                'label'=> 'Votre nom',
+                'label'=> 'Votre nom *',
                 'constraints'=> new Length([
                     'min'=>2,
                     'max'=>30
@@ -33,7 +33,7 @@ class RegisterType extends AbstractType
                 ]
             ])
             ->add('firstname',TextType::class,[
-                'label'=> 'Votre prenom',
+                'label'=> 'Votre prenom *',
                 'constraints'=>
                     new Length([
                     'min'=>2,
@@ -44,7 +44,7 @@ class RegisterType extends AbstractType
                 ]
             ])
             ->add('email', EmailType::class, [
-                'label'=> 'Votre email',
+                'label'=> 'Votre email *',
                 'constraints'=> new Length([
                     'min'=>2,
                     'max'=>30
@@ -56,16 +56,15 @@ class RegisterType extends AbstractType
             ->add('password', RepeatedType::class, [
                 'type'=> PasswordType::class,
                 'invalid_message' => 'le mot de passe et la confirmation doivent être identiques',
-                'label' => 'Votre mot de passe',
                 'required'=>true,
                 'first_options' =>
-                    ['label'=>'Mot de passe',
+                    ['label'=>'Mot de passe *',
                         'attr'=>[
                             'placeholder'=> 'Merci de saisir votre mot de passe']
 
                     ],
                 'second_options' =>
-                    ['label'=> 'Confimer votre mot de passe',
+                    ['label'=> 'Confimer votre mot de passe *',
                         'attr'=>[
                             'placeholder'=> 'Merci de confirmer votre mot de passe']
                     ],
@@ -73,13 +72,11 @@ class RegisterType extends AbstractType
 
             ->add('birthday', BirthdayType::class, [
                 'label'=> "Votre date de naissance",
-                'placeholder' => [
-                    'day' => 'jour','year' => 'année', 'month' => 'mois',
-                    ]
+                'widget' => 'single_text',
             ])
 
             ->add('phone',TelType::class, [
-                'label'=>'Votre telephone',
+                'label'=>'Votre telephone *',
                 'constraints'=>
                     new Length([
                         'min'=>2,
@@ -118,12 +115,12 @@ class RegisterType extends AbstractType
                     'placeholder'=>'Entrer votre pays'
                 ]
             ] )
-            ->add('submit', SubmitType::class,[
-                'label' => "S'inscrire",
-                'attr'=>[
-                    'class'=>'btn btn-info btn-block'
-                ]
-            ])
+            // ->add('submit', SubmitType::class,[
+            //     'label' => "S'inscrire",
+            //     'attr'=>[
+            //         'class'=>'btn btn-info btn-block'
+            //     ]
+            // ])
         ;
     }
 
